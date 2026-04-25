@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maiko Digital | We Fill Salon Chairs & Barber Seats</title>
+<meta name="description" content="Maiko Digital builds high-converting websites for salons and barbershops. More bookings. More customers. More revenue.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+--bg: #020202;
+--surface: #0c0c0f;
+--surface-hover: #141419;
+--border: #1e1e24;
+--border-light: #2a2a32;
+--accent: #c4f649;
+--accent-dim: rgba(196,246,73,0.12);
+--accent-glow: rgba(196,246,73,0.08);
+--text: #ffffff;
+--text-secondary: #c8c8ce;
+--text-muted: #7e7e86;
+--danger: #ff4757;
+--success: #2ed573;
+}
+
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+font-family: 'Inter', sans-serif;
+background: var(--bg);
+color: var(--text);
+overflow-x: hidden;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: var(--accent); color: var(--bg); }
+
+/* Noise overlay */
+body::before {
+content: '';
+position: fixed; inset: 0; z-index: 9999;
+pointer-events: none; opacity: 0.025;
+background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+background-repeat: repeat;
+background-size: 200px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* Typography */
+h1,h2,h3,h4 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+p { line-height: 1.7; color: var(--text-secondary); }
+
+/* NAV */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+padding: 1.2rem 4vw;
+display: flex; align-items: center; justify-content: space-between;
+transition: background 0.3s, backdrop-filter 0.3s;
+}
+nav.scrolled {
+background: rgba(2,2,2,0.85);
+backdrop-filter: blur(20px) saturate(1.2);
+border-bottom: 1px solid var(--border);
+}
+.logo {
+font-weight: 900; font-size: 1.3rem; color: var(--text);
+text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+}
+.logo-dot {
+width: 8px; height: 8px; background: var(--accent);
+border-radius: 50%; box-shadow: 0 0 12px var(--accent);
+animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+.nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+.nav-links a {
+color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;
+font-weight: 500; transition: color 0.2s; position: relative;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a::after {
+content: ''; position: absolute; bottom: -4px; left: 0;
+width: 0; height: 1.5px; background: var(--accent);
+transition: width 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+background: var(--accent); color: var(--bg) !important;
+padding: 0.6rem 1.4rem; border-radius: 100px; font-weight: 700;
+transition: transform 0.2s, box-shadow 0.2s !important;
+}
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(196,246,73,0.25); }
+.nav-cta::after { display: none !important; }
+
+.mobile-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.4rem; cursor: pointer; }
+
+/* HERO */
+.hero {
+min-height: 100vh; display: flex; flex-direction: column;
+justify-content: center; padding: 8rem 4vw 4rem;
+position: relative; overflow: hidden;
+}
+.hero-grid {
+position: absolute; inset: 0;
+background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+background-size: 80px 80px; opacity: 0.3;
+mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
+}
+.hero-glow {
+position: absolute; width: 600px; height: 600px;
+background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+top: -10%; right: -10%; pointer-events: none;
+}
+.hero-content { max-width: 1100px; position: relative; z-index: 2; }
+
+.badge {
+display: inline-flex; align-items: center; gap: 0.6rem;
+padding: 0.5rem 1rem; border: 1px solid var(--border-light);
+border-radius: 100px; font-size: 0.8rem; color: var(--accent);
+font-family: 'JetBrains Mono', monospace; font-weight: 500;
+margin-bottom: 2rem; background: var(--surface);
+}
+.badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+
+.hero h1 {
+font-size: clamp(2.8rem, 6vw, 5.5rem);
+margin-bottom: 1.5rem; max-width: 900px;
+}
+.hero h1 .highlight {
+color: var(--accent);
+text-shadow: 0 0 40px rgba(196,246,73,0.15);
+}
+
+.hero-sub {
+font-size: clamp(1rem, 1.5vw, 1.25rem);
+max-width: 560px; margin-bottom: 2.5rem; color: var(--text-secondary);
+}
+
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+
+.btn {
+display: inline-flex; align-items: center; gap: 0.6rem;
+padding: 1rem 2rem; border-radius: 100px; font-weight: 700;
+font-size: 0.9rem; text-decoration: none; border: none; cursor: pointer;
+transition: all 0.25s cubic-bezier(0.4,0,0.2,1); position: relative; overflow: hidden;
+}
+.btn-primary {
+background: var(--accent); color: var(--bg);
+box-shadow: 0 4px 20px rgba(196,246,73,0.2);
+}
+.btn-primary:hover {
+transform: translateY(-3px); box-shadow: 0 12px 40px rgba(196,246,73,0.3);
+}
+.btn-ghost {
+background: transparent; color: var(--text);
+border: 1.5px solid var(--border-light);
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
+
+/* Trust bar */
+.trust-bar {
+display: flex; align-items: center; gap: 2rem;
+flex-wrap: wrap; padding-top: 2rem;
+border-top: 1px solid var(--border);
+}
+.trust-item { display: flex; align-items: center; gap: 0.6rem; }
+.trust-item i { color: var(--accent); font-size: 1.3rem; }
+.trust-item span { font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
+
+/* Section base */
+section { padding: 7rem 4vw; position: relative; }
+.section-pinned { max-width: 1200px; margin: 0 auto; }
+
+.section-tag {
+display: inline-block; font-family: 'JetBrains Mono', monospace;
+font-size: 0.75rem; color: var(--accent); text-transform: uppercase;
+letter-spacing: 0.15em; margin-bottom: 1rem;
+}
+.section-head {
+font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1rem;
+max-width: 700px;
+}
+.section-sub { color: var(--text-secondary); max-width: 600px; font-size: 1.05rem; }
+
+/* PROBLEM AGITATION */
+.problem { background: var(--surface); border-top: 1px solid var(--border); }
+.problem-grid {
+display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 1.5rem; margin-top: 3rem;
+}
+.prob-card {
+background: var(--bg); border: 1px solid var(--border);
+border-radius: 16px; padding: 2rem;
+transition: all 0.3s ease;
+}
+.prob-card:hover { border-color: var(--border-light); transform: translateY(-4px); }
+.prob-card .icon {
+width: 56px; height: 56px; border-radius: 14px;
+background: rgba(255,71,87,0.1); color: var(--danger);
+display: flex; align-items: center; justify-content: center;
+font-size: 1.5rem; margin-bottom: 1.2rem;
+}
+.prob-card h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.prob-card p { font-size: 0.9rem; color: var(--text-muted); }
+
+/* SOLUTION */
+.solution-grid {
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 4rem; align-items: center; margin-top: 4rem;
+}
+.solution-visual {
+position: relative; border-radius: 24px; overflow: hidden;
+border: 1px solid var(--border); background: var(--surface);
+aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
+}
+.solution-visual::before {
+content: ''; position: absolute; inset: 0;
+background: radial-gradient(circle at 30% 30%, var(--accent-glow), transparent 60%);
+}
+.solution-visual img {
+width: 100%; height: 100%; object-fit: cover;
+opacity: 0.9; position: relative; z-index: 1;
+}
+.solution-metrics {
+position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem;
+display: flex; gap: 1rem; z-index: 2;
+}
+.metric-pill {
+flex: 1; background: rgba(2,2,2,0.8); backdrop-filter: blur(10px);
+border: 1px solid var(--border); border-radius: 12px;
+padding: 1rem; text-align: center;
+}
+.metric-pill .num { font-family: 'JetBrains Mono', monospace; font-size: 1.3rem; font-weight: 700; color: var(--accent); }
+.metric-pill .lbl { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.2rem; }
+
+.solution-list { display: flex; flex-direction: column; gap: 1.5rem; }
+.sol-item { display: flex; gap: 1.2rem; }
+.sol-num {
+font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+color: var(--accent); font-weight: 700; margin-top: 0.2rem; flex-shrink: 0;
+}
+.sol-item h4 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+.sol-item p { font-size: 0.9rem; color: var(--text-muted); }
+
+/* PORTFOLIO */
+.portfolio { background: var(--surface); border-top: 1px solid var(--border); }
+.projects-grid {
+display: grid; grid-template-columns: repeat(2, 1fr);
+gap: 1.5rem; margin-top: 3rem;
+}
+@media (max-width: 768px) { .projects-grid { grid-template-columns: 1fr; } }
+
+.project-card {
+background: var(--bg); border: 1px solid var(--border);
+border-radius: 20px; overflow: hidden;
+transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+position: relative;
+}
+.project-card:hover {
+transform: translateY(-6px) scale(1.01);
+border-color: var(--border-light);
+box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--border-light);
+}
+.project-card::after {
+content: ''; position: absolute; inset: 0; border-radius: 20px;
+box-shadow: inset 0 0 0 1px rgba(196,246,73,0); transition: box-shadow 0.4s;
+pointer-events: none;
+}
+.project-card:hover::after { box-shadow: inset 0 0 0 1px rgba(196,246,73,0.15); }
+
+.project-preview {
+height: 260px; background: linear-gradient(135deg, #0a0a0f 0%, #141419 100%);
+position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
+}
+.project-preview::before {
+content: ''; position: absolute; inset: 0;
+background: radial-gradient(circle at 50% 50%, rgba(196,246,73,0.03), transparent 70%);
+z-index: 1;
+}
+.project-preview img {
+width: 100%; height: 100%; object-fit: cover;
+transition: transform 0.5s ease;
+}
+.project-card:hover .project-preview img { transform: scale(1.05); }
+
+.project-overlay {
+position: absolute; inset: 0; background: rgba(2,2,2,0.85);
+display: flex; align-items: center; justify-content: center; gap: 1rem;
+opacity: 0; transition: opacity 0.3s ease;
+z-index: 2;
+}
+.project-card:hover .project-overlay { opacity: 1; }
+.project-overlay a {
+padding: 0.7rem 1.5rem; border-radius: 100px; font-size: 0.85rem;
+font-weight: 600; text-decoration: none; transition: all 0.2s;
+cursor: pointer;
+}
+.project-overlay .live-btn {
+background: var(--accent); color: var(--bg);
+}
+.project-overlay .live-btn:hover { transform: scale(1.05); }
+.project-overlay .case-btn {
+background: transparent; color: var(--text); border: 1px solid var(--border-light);
+}
+.project-overlay .case-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+.project-info { padding: 1.8rem; }
+.project-meta {
+display: flex; justify-content: space-between; align-items: center;
+margin-bottom: 0.8rem;
+}
+.project-type {
+font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;
+color: var(--accent); font-weight: 600;
+}
+.project-result {
+font-size: 0.75rem; color: var(--success); font-weight: 600;
+display: flex; align-items: center; gap: 0.3rem;
+}
+.project-title { font-size: 1.3rem; margin-bottom: 0.5rem; }
+.project-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+.project-tags { display: flex; gap: 0.5rem; margin-top: 1.2rem; flex-wrap: wrap; }
+.project-tag {
+padding: 0.35rem 0.9rem; background: var(--surface);
+border: 1px solid var(--border); border-radius: 100px;
+font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;
+}
+
+/* PROCESS */
+.process-steps {
+display: grid; grid-template-columns: repeat(4, 1fr);
+gap: 1.5rem; margin-top: 3rem;
+}
+@media (max-width: 900px) { .process-steps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .process-steps { grid-template-columns: 1fr; } }
+
+.step {
+background: var(--surface); border: 1px solid var(--border);
+border-radius: 20px; padding: 2rem; position: relative;
+transition: all 0.3s ease;
+}
+.step:hover { border-color: var(--border-light); transform: translateY(-4px); }
+.step-num {
+font-family: 'JetBrains Mono', monospace; font-size: 2.5rem;
+font-weight: 800; color: var(--accent); opacity: 0.15;
+position: absolute; top: 1.5rem; right: 1.5rem;
+}
+.step-icon {
+width: 56px; height: 56px; border-radius: 16px;
+background: var(--accent-dim); color: var(--accent);
+display: flex; align-items: center; justify-content: center;
+font-size: 1.5rem; margin-bottom: 1.5rem;
+}
+.step h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.step p { font-size: 0.9rem; color: var(--text-muted); }
+
+/* SOCIAL PROOF */
+.social-proof { background: var(--surface); border-top: 1px solid var(--border); }
+.testimonials {
+display: grid; grid-template-columns: repeat(3, 1fr);
+gap: 1.5rem; margin-top: 3rem;
+}
+@media (max-width: 900px) { .testimonials { grid-template-columns: 1fr; } }
+
+.testimonial {
+background: var(--bg); border: 1px solid var(--border);
+border-radius: 20px; padding: 2rem;
+transition: all 0.3s ease;
+}
+.testimonial:hover { border-color: var(--border-light); }
+.testimonial-stars { color: var(--accent); font-size: 1.1rem; margin-bottom: 1rem; }
+.testimonial-text { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7; }
+.testimonial-author { display: flex; align-items: center; gap: 1rem; }
+.testimonial-avatar {
+width: 48px; height: 48px; border-radius: 50%;
+background: linear-gradient(135deg, var(--accent), #8b5cf6);
+display: flex; align-items: center; justify-content: center;
+font-weight: 700; font-size: 1rem; color: var(--bg);
+}
+.testimonial-name { font-weight: 700; font-size: 0.9rem; }
+.testimonial-role { font-size: 0.8rem; color: var(--text-muted); }
+
+/* PRICING */
+.pricing-grid {
+display: grid; grid-template-columns: repeat(3, 1fr);
+gap: 1.5rem; margin-top: 3rem; align-items: start;
+}
+@media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; max-width: 500px; margin: 3rem auto 0; } }
+
+.price-card {
+background: var(--surface); border: 1px solid var(--border);
+border-radius: 24px; padding: 2.5rem 2rem;
+transition: all 0.3s ease; position: relative;
+}
+.price-card:hover { transform: translateY(-6px); border-color: var(--border-light); }
+.price-card.featured {
+border-color: var(--accent); background: linear-gradient(180deg, var(--surface) 0%, rgba(196,246,73,0.03) 100%);
+box-shadow: 0 0 60px rgba(196,246,73,0.05);
+}
+.price-badge {
+position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+background: var(--accent); color: var(--bg); padding: 0.4rem 1.2rem;
+border-radius: 100px; font-size: 0.75rem; font-weight: 700;
+}
+.price-name { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.price-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+.price-amount { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.2rem; }
+.price-amount span { font-size: 1rem; color: var(--text-muted); font-weight: 500; }
+.price-period { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; }
+.price-features li {
+display: flex; align-items: center; gap: 0.7rem;
+font-size: 0.9rem; color: var(--text-secondary);
+}
+.price-features li i { color: var(--accent); font-size: 1rem; }
+.price-btn {
+width: 100%; padding: 1rem; border-radius: 12px; border: none;
+font-weight: 700; font-size: 0.9rem; cursor: pointer;
+transition: all 0.2s; font-family: 'Inter', sans-serif;
+}
+.price-btn-primary { background: var(--accent); color: var(--bg); }
+.price-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(196,246,73,0.25); }
+.price-btn-secondary { background: transparent; color: var(--text); border: 1.5px solid var(--border-light); }
+.price-btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+/* FAQ */
+.faq { background: var(--surface); border-top: 1px solid var(--border); }
+.faq-list { max-width: 800px; margin: 3rem auto 0; display: flex; flex-direction: column; gap: 1rem; }
+.faq-item {
+background: var(--bg); border: 1px solid var(--border);
+border-radius: 16px; overflow: hidden; transition: all 0.3s;
+}
+.faq-item:hover { border-color: var(--border-light); }
+.faq-q {
+padding: 1.5rem; display: flex; justify-content: space-between; align-items: center;
+cursor: pointer; font-weight: 600; font-size: 0.95rem;
+}
+.faq-q i { color: var(--text-muted); transition: transform 0.3s; font-size: 1rem; }
+.faq-item.active .faq-q i { transform: rotate(180deg); color: var(--accent); }
+.faq-a {
+max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.4s;
+padding: 0 1.5rem;
+}
+.faq-item.active .faq-a { max-height: 300px; padding: 0 1.5rem 1.5rem; }
+.faq-a p { color: var(--text-muted); font-size: 0.9rem; }
+
+/* CONTACT */
+.contact-wrapper {
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 4rem; margin-top: 3rem; align-items: start;
+}
+@media (max-width: 900px) { .contact-wrapper { grid-template-columns: 1fr; } }
+
+.contact-info h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+.contact-info > p { margin-bottom: 2rem; }
+.contact-details { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2rem; }
+.contact-row {
+display: flex; align-items: flex-start; gap: 1rem;
+}
+.contact-icon-box {
+width: 52px; height: 52px; border-radius: 16px;
+background: var(--surface); border: 1px solid var(--border);
+display: flex; align-items: center; justify-content: center;
+color: var(--accent); flex-shrink: 0; font-size: 1.3rem;
+}
+.contact-row h5 { font-size: 0.95rem; margin-bottom: 0.2rem; }
+.contact-row a, .contact-row p { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+.contact-row a:hover { color: var(--accent); }
+
+.whatsapp-cta {
+display: inline-flex; align-items: center; gap: 0.8rem;
+padding: 1rem 2rem; background: #25D366; color: white;
+border-radius: 100px; font-weight: 700; text-decoration: none;
+transition: all 0.25s; font-size: 0.9rem;
+}
+.whatsapp-cta:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(37,211,102,0.3); }
+
+.contact-form {
+background: var(--surface); border: 1px solid var(--border);
+border-radius: 24px; padding: 2.5rem;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+.form-group { margin-bottom: 1.2rem; }
+.form-group label {
+display: block; font-size: 0.8rem; font-weight: 600;
+color: var(--text-secondary); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;
+}
+.form-group input, .form-group textarea, .form-group select {
+width: 100%; padding: 0.9rem 1.1rem; background: var(--bg);
+border: 1.5px solid var(--border); border-radius: 12px;
+color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.95rem;
+transition: all 0.2s;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+outline: none; border-color: var(--accent);
+box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.form-group textarea { resize: vertical; min-height: 120px; }
+.form-group select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%237e7e86'%3E%3Cpath d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
+.form-group select option { background: var(--bg); color: var(--text); }
+
+.form-submit {
+width: 100%; padding: 1rem; background: var(--accent); color: var(--bg);
+border: none; border-radius: 12px; font-family: 'Inter', sans-serif;
+font-size: 0.95rem; font-weight: 700; cursor: pointer;
+transition: all 0.25s; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+}
+.form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(196,246,73,0.25); }
+.form-submit.success { background: var(--success); }
+
+/* FOOTER */
+footer {
+background: var(--surface); border-top: 1px solid var(--border);
+padding: 4rem 4vw 2rem;
+}
+.footer-grid {
+display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+gap: 3rem; max-width: 1200px; margin: 0 auto 3rem;
+}
+@media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px) { .footer-grid { grid-template-columns: 1fr; } }
+
+.footer-brand .logo { margin-bottom: 1rem; display: inline-flex; }
+.footer-brand p { font-size: 0.9rem; color: var(--text-muted); max-width: 300px; }
+.footer-col h5 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 1.2rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; cursor: pointer; }
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom {
+max-width: 1200px; margin: 0 auto; padding-top: 2rem;
+border-top: 1px solid var(--border); display: flex;
+justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-bottom p { font-size: 0.85rem; color: var(--text-muted); }
+.footer-socials { display: flex; gap: 0.8rem; }
+.footer-socials a {
+width: 44px; height: 44px; border-radius: 50%;
+background: var(--bg); border: 1px solid var(--border);
+display: flex; align-items: center; justify-content: center;
+color: var(--text-muted); text-decoration: none; font-size: 1.1rem;
+transition: all 0.2s;
+}
+.footer-socials a:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); transform: translateY(-3px); }
+
+/* REVEAL ANIMATIONS - GPU optimized */
+.reveal {
+opacity: 0; transform: translateY(30px);
+transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1);
+will-change: opacity, transform;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Mobile nav */
+.mobile-nav {
+position: fixed; inset: 0; z-index: 200;
+background: var(--bg); display: flex; flex-direction: column;
+align-items: center; justify-content: center; gap: 2rem;
+transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.mobile-nav.open { transform: translateX(0); }
+.mobile-nav a { font-size: 1.5rem; font-weight: 700; color: var(--text); text-decoration: none; }
+.mobile-nav .nav-cta { font-size: 1rem; margin-top: 1rem; }
+.mobile-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+/* PREVIEW MODAL */
+.preview-modal {
+position: fixed; inset: 0; z-index: 1000;
+background: rgba(2,2,2,0.95);
+display: flex; flex-direction: column;
+opacity: 0; pointer-events: none;
+transition: opacity 0.3s ease;
+}
+.preview-modal.active { opacity: 1; pointer-events: all; }
+.preview-header {
+display: flex; align-items: center; justify-content: space-between;
+padding: 1rem 2rem; border-bottom: 1px solid var(--border);
+background: var(--surface);
+}
+.preview-header h4 { font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+.preview-header h4 i { color: var(--accent); font-size: 1.2rem; }
+.preview-close {
+background: none; border: none; color: var(--text);
+font-size: 1.5rem; cursor: pointer; padding: 0.5rem;
+transition: color 0.2s;
+}
+.preview-close:hover { color: var(--accent); }
+.preview-frame {
+flex: 1; border: none; width: 100%; background: var(--bg);
+}
+
+/* POPUP MODAL */
+.popup-overlay {
+position: fixed; inset: 0; z-index: 2000;
+background: rgba(2,2,2,0.85);
+backdrop-filter: blur(8px);
+display: flex; align-items: center; justify-content: center;
+opacity: 0; pointer-events: none;
+transition: opacity 0.3s ease;
+padding: 2rem;
+}
+.popup-overlay.active { opacity: 1; pointer-events: all; }
+.popup-card {
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: 24px;
+padding: 2.5rem;
+max-width: 420px;
+width: 100%;
+text-align: center;
+position: relative;
+box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+transform: scale(0.95);
+transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.popup-overlay.active .popup-card { transform: scale(1); }
+.popup-icon {
+width: 72px; height: 72px;
+background: var(--accent-dim);
+border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+margin: 0 auto 1.5rem;
+font-size: 1.8rem;
+color: var(--accent);
+}
+.popup-card h3 {
+font-size: 1.4rem;
+margin-bottom: 0.75rem;
+}
+.popup-card p {
+color: var(--text-secondary);
+font-size: 0.95rem;
+margin-bottom: 2rem;
+line-height: 1.6;
+}
+.popup-btn {
+background: var(--accent);
+color: var(--bg);
+border: none;
+padding: 0.9rem 2.5rem;
+border-radius: 100px;
+font-family: 'Inter', sans-serif;
+font-size: 0.95rem;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.25s;
+}
+.popup-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 25px rgba(196,246,73,0.25);
+}
+.popup-close-x {
+position: absolute;
+top: 1.2rem;
+right: 1.2rem;
+background: none;
+border: none;
+color: var(--text-muted);
+font-size: 1.2rem;
+cursor: pointer;
+transition: color 0.2s;
+padding: 0.25rem;
+}
+.popup-close-x:hover { color: var(--accent); }
+
+@media (max-width: 768px) {
+.nav-links { display: none; }
+.mobile-toggle { display: block; }
+.solution-grid { grid-template-columns: 1fr; gap: 2rem; }
+.solution-visual { aspect-ratio: 16/9; }
+section { padding: 4rem 4vw; }
+.hero { padding-top: 6rem; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+*,*::before,*::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+.reveal { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.text-accent { color: var(--accent); }
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<!-- POPUP MODAL -->
+<div class="popup-overlay" id="popupOverlay" onclick="closePopup(event)">
+<div class="popup-card" onclick="event.stopPropagation()">
+    <button class="popup-close-x" onclick="closePopup()"><i class="fas fa-xmark"></i></button>
+    <div class="popup-icon"><i class="fas fa-rocket"></i></div>
+    <h3>Coming Soon!</h3>
+    <p>This feature is currently under development. Stay tuned for updates from Maiko Digital.</p>
+    <button class="popup-btn" onclick="closePopup()">Got it</button>
+</div>
+</div>
+
+<!-- PREVIEW MODAL -->
+<div class="preview-modal" id="previewModal">
+<div class="preview-header">
+<h4><i class="fas fa-eye"></i> Live Preview</h4>
+<button class="preview-close" onclick="closePreview()"><i class="fas fa-xmark"></i></button>
+</div>
+<iframe class="preview-frame" id="previewFrame" src=""></iframe>
+</div>
+
+<nav id="navbar">
+<a href="#" class="logo" target="_self"><div class="logo-dot"></div>Maiko Digital</a>
+<ul class="nav-links">
+<li><a href="#work">Work</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#process">Process</a></li>
+<li><a href="#pricing">Pricing</a></li>
+<li><a href="https://wa.link/94sl4t?text=Hello%20Maiko%20Digital,%20I%20would%20like%20to%20request%20a%20free%20website%20audit%20for%20my%20salon/barbershop." class="nav-cta" target="_blank">Get a Free Audit</a></li>
+</ul>
+<button class="mobile-toggle" onclick="toggleMobile()" aria-label="Menu"><i class="fas fa-bars"></i></button>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+<button class="mobile-close" onclick="toggleMobile()"><i class="fas fa-xmark"></i></button>
+<a href="#work" onclick="toggleMobile()">Work</a>
+<a href="#services" onclick="toggleMobile()">Services</a>
+<a href="#process" onclick="toggleMobile()">Process</a>
+<a href="#pricing" onclick="toggleMobile()">Pricing</a>
+<a href="https://wa.link/94sl4t?text=Hello%20Maiko%20Digital,%20I%20would%20like%20to%20request%20a%20free%20website%20audit%20for%20my%20salon/barbershop." class="nav-cta" onclick="toggleMobile()" target="_blank">Get a Free Audit</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="hero-grid"></div>
+<div class="hero-glow"></div>
+<div class="hero-content">
+<div class="badge"><div class="badge-dot"></div>Trusted by 50+ Salons & Barbershops</div>
+<h1>Websites That <span class="highlight">Fill Your Chairs</span>. Not Just Look Pretty.</h1>
+<p class="hero-sub">Maiko Digital builds high-converting websites for salons and barbershops. More bookings. More walk-ins. More revenue. Based in Kisii, Kenya — serving clients worldwide.</p>
+<div class="hero-actions">
+    <a href="#work" class="btn btn-primary">See Our Work <i class="fas fa-arrow-right"></i></a>
+    <a href="https://wa.link/94sl4t" target="_blank" class="btn btn-ghost"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+</div>
+<div class="trust-bar">
+    <div class="trust-item"><i class="fas fa-bolt"></i><span>7-Day Delivery</span></div>
+    <div class="trust-item"><i class="fas fa-shield-halved"></i><span>100% Satisfaction</span></div>
+    <div class="trust-item"><i class="fas fa-location-dot"></i><span>Kisii, Kenya</span></div>
+    <div class="trust-item"><i class="fas fa-arrows-rotate"></i><span>Unlimited Revisions</span></div>
+</div>
+</div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+<div class="section-pinned">
+<div class="section-tag">The Problem</div>
+<h2 class="section-head">Your Competition Is Online.<br>Are You?</h2>
+<p class="section-sub">Most salons and barbershops lose customers every day to competitors with a stronger digital presence. Here's what happens when you don't have a proper website:</p>
+<div class="problem-grid">
+    <div class="prob-card reveal">
+    <div class="icon"><i class="fas fa-arrow-trend-down"></i></div>
+    <h4>Invisible on Google</h4>
+    <p>Potential clients search "barber near me" and find your competitor instead. You're literally giving away customers.</p>
+    </div>
+    <div class="prob-card reveal reveal-delay-1">
+    <div class="icon"><i class="fas fa-phone-slash"></i></div>
+    <h4>No Online Booking</h4>
+    <p>Clients call, get no answer, and book elsewhere. A website with booking captures customers 24/7 while you sleep.</p>
+    </div>
+    <div class="prob-card reveal reveal-delay-2">
+    <div class="icon"><i class="fas fa-face-frown-open"></i></div>
+    <h4>Looks Unprofessional</h4>
+    <p>A dated or broken website kills trust instantly. First impressions matter — especially in the beauty industry.</p>
+    </div>
+    <div class="prob-card reveal reveal-delay-3">
+    <div class="icon"><i class="fas fa-money-bill-wave"></i></div>
+    <h4>Wasted Ad Spend</h4>
+    <p>Running Instagram or Google ads without a converting website is like pouring water into a leaking bucket.</p>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- SOLUTION -->
+<section id="services">
+<div class="section-pinned">
+<div class="section-tag">Our Solution</div>
+<h2 class="section-head">Everything Your Salon Needs to Win Online</h2>
+<p class="section-sub">We don't just design websites. We build customer-generating machines tailored specifically for salons and barbershops.</p>
+<div class="solution-grid">
+    <div class="solution-visual reveal">
+    <img src="https://images.openai.com/static-rsc-4/zKjlqn7eXeSn3dF5TyP4pR0LZG0a8N0lzbqaVfi5a42jovYeI3kv5z-IB-FmJXWAREysGhbj8G12IhEor_6KTlWXGx-zK0I9Eg-5tLt5Uq1CeCAn4PBYH1T9cHo06OTnKWB3ntMid_J9uM6tfy5_4Dj4_shnZcEC5dgfnEGbYnoXC1DNCddB98FNwcSzwoTo?purpose=fullsize">
+    <div class="solution-metrics">
+        <div class="metric-pill"><div class="num">3x</div><div class="lbl">More Bookings</div></div>
+        <div class="metric-pill"><div class="num">24/7</div><div class="lbl">Always Open</div></div>
+        <div class="metric-pill"><div class="num">#1</div><div class="lbl">Google Rank</div></div>
+    </div>
+    </div>
+    <div class="solution-list">
+    <div class="sol-item reveal">
+        <div class="sol-num">01</div>
+        <div>
+        <h4>Conversion-Focused Design</h4>
+        <p>Every button, image, and word is strategically placed to turn visitors into booked appointments. Psychology-driven layouts.</p>
+        </div>
+    </div>
+    <div class="sol-item reveal reveal-delay-1">
+        <div class="sol-num">02</div>
+        <div>
+        <h4>Built-In Online Booking</h4>
+        <p>Integrated appointment systems that let clients book, reschedule, and pay — without you lifting a finger.</p>
+        </div>
+    </div>
+    <div class="sol-item reveal reveal-delay-2">
+        <div class="sol-num">03</div>
+        <div>
+        <h4>Google-Optimized & Fast</h4>
+        <p>Lightning-fast load speeds and SEO best practices so you rank at the top when locals search for your services.</p>
+        </div>
+    </div>
+    <div class="sol-item reveal reveal-delay-3">
+        <div class="sol-num">04</div>
+        <div>
+        <h4>Mobile-First Experience</h4>
+        <p>80% of your clients browse on phones. Your site will look and work flawlessly on every device, every time.</p>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="work">
+<div class="section-pinned">
+<div class="section-tag">Case Studies</div>
+<h2 class="section-head">Real Results for Real Businesses</h2>
+<p class="section-sub">Every project below was built to do one thing: get more customers through the door. Click any project to see it live.</p>
+<div class="projects-grid">
+
+    <div class="project-card reveal">
+    <div class="project-preview">
+        <img src="https://image.thum.io/get/width/800/crop/600/https://thecutabove-maikodigital.netlify.app/" alt="The Cut Above website preview" loading="lazy">
+        <div class="project-overlay">
+        <a href="#" onclick="openPreview('https://thecutabove-maikodigital.netlify.app/'); return false;" class="live-btn">View Live Site <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+    <div class="project-info">
+        <div class="project-meta">
+        <span class="project-type">Barbershop</span>
+        <span class="project-result"><i class="fas fa-arrow-up"></i> 210% bookings</span>
+        </div>
+        <h3 class="project-title">The Cut Above</h3>
+        <p class="project-desc">Premium barbershop website with online booking, service menu, and Instagram feed integration. Designed to convert walk-by traffic into appointments.</p>
+        <div class="project-tags">
+        <span class="project-tag">Online Booking</span>
+        <span class="project-tag">SEO</span>
+        <span class="project-tag">Mobile-First</span>
+        </div>
+    </div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-1">
+    <div class="project-preview">
+        <img src="https://image.thum.io/get/width/800/crop/600/https://riseandgrind-maikodigital.netlify.app/" alt="Rise and Grind website preview" loading="lazy">
+        <div class="project-overlay">
+        <a href="#" onclick="openPreview('https://riseandgrind-maikodigital.netlify.app/'); return false;" class="live-btn">View Live Site <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+    <div class="project-info">
+        <div class="project-meta">
+        <span class="project-type">Fitness / Crossover</span>
+        <span class="project-result"><i class="fas fa-arrow-up"></i> 180% leads</span>
+        </div>
+        <h3 class="project-title">Rise and Grind</h3>
+        <p class="project-desc">High-energy fitness platform with class scheduling and membership tiers. Bold typography and motion that captures the brand's intensity.</p>
+        <div class="project-tags">
+        <span class="project-tag">Class Scheduling</span>
+        <span class="project-tag">Animations</span>
+        <span class="project-tag">CMS</span>
+        </div>
+    </div>
+    </div>
+
+    <div class="project-card reveal">
+    <div class="project-preview">
+        <img src="https://image.thum.io/get/width/800/crop/600/https://glowbeauty-maikodigital.netlify.app/" alt="Glow Beauty website preview" loading="lazy">
+        <div class="project-overlay">
+        <a href="#" onclick="openPreview('https://glowbeauty-maikodigital.netlify.app/'); return false;" class="live-btn">View Live Site <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+    <div class="project-info">
+        <div class="project-meta">
+        <span class="project-type">Beauty Salon</span>
+        <span class="project-result"><i class="fas fa-arrow-up"></i> 340% inquiries</span>
+        </div>
+        <h3 class="project-title">Glow Beauty</h3>
+        <p class="project-desc">Elegant beauty salon website with treatment galleries, staff profiles, and WhatsApp booking integration. Soft aesthetics that build trust.</p>
+        <div class="project-tags">
+        <span class="project-tag">WhatsApp Booking</span>
+        <span class="project-tag">Gallery</span>
+        <span class="project-tag">Local SEO</span>
+        </div>
+    </div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-1">
+    <div class="project-preview">
+        <img src="https://image.thum.io/get/width/800/crop/600/https://elitecuts-maikodigital.netlify.app/" alt="Elite Cuts website preview" loading="lazy">
+        <div class="project-overlay">
+        <a href="#" onclick="openPreview('https://elitecuts-maikodigital.netlify.app/'); return false;" class="live-btn">View Live Site <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+    <div class="project-info">
+        <div class="project-meta">
+        <span class="project-type">Luxury Grooming</span>
+        <span class="project-result"><i class="fas fa-arrow-up"></i> 150% avg. ticket</span>
+        </div>
+        <h3 class="project-title">Elite Cuts</h3>
+        <p class="project-desc">Luxury grooming experience with VIP membership portal, portfolio showcase, and premium brand positioning. Built for high-ticket clientele.</p>
+        <div class="project-tags">
+        <span class="project-tag">VIP Portal</span>
+        <span class="project-tag">Premium UI</span>
+        <span class="project-tag">Brand Strategy</span>
+        </div>
+    </div>
+    </div>
+
+</div>
+</div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+<div class="section-pinned">
+<div class="section-tag">How It Works</div>
+<h2 class="section-head">From Idea to Live Site in 7 Days</h2>
+<p class="section-sub">No endless back-and-forth. No surprises. Our streamlined process gets you online fast — without cutting corners.</p>
+<div class="process-steps">
+    <div class="step reveal">
+    <div class="step-num">01</div>
+    <div class="step-icon"><i class="fas fa-bullseye"></i></div>
+    <h4>Discovery Call</h4>
+    <p>We jump on a quick call (or WhatsApp chat) to understand your brand, goals, and what makes your salon special.</p>
+    </div>
+    <div class="step reveal reveal-delay-1">
+    <div class="step-num">02</div>
+    <div class="step-icon"><i class="fas fa-palette"></i></div>
+    <h4>Design & Approval</h4>
+    <p>You get a custom design mockup within 48 hours. Approve it or request changes — unlimited revisions included.</p>
+    </div>
+    <div class="step reveal reveal-delay-2">
+    <div class="step-num">03</div>
+    <div class="step-icon"><i class="fas fa-bolt"></i></div>
+    <h4>Build & Optimize</h4>
+    <p>We code your site with clean, fast code. SEO, speed optimization, and mobile responsiveness baked in from day one.</p>
+    </div>
+    <div class="step reveal reveal-delay-3">
+    <div class="step-num">04</div>
+    <div class="step-icon"><i class="fas fa-rocket"></i></div>
+    <h4>Launch & Support</h4>
+    <p>Your site goes live. We hand over the keys and stay available for 30 days of free support and tweaks.</p>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="social-proof" id="testimonials">
+<div class="section-pinned">
+<div class="section-tag">Testimonials</div>
+<h2 class="section-head">Don't Take Our Word For It</h2>
+<p class="section-sub">Here's what salon and barbershop owners say after working with Maiko Digital.</p>
+<div class="testimonials">
+    <div class="testimonial reveal">
+    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+    <p class="testimonial-text">"Before Maiko Digital, we relied on walk-ins. Within a month of launching our site, online bookings jumped 200%. The ROI was insane."</p>
+    <div class="testimonial-author">
+        <div class="testimonial-avatar">JK</div>
+        <div>
+        <div class="testimonial-name">James K.</div>
+        <div class="testimonial-role">Owner, The Cut Above</div>
+        </div>
+    </div>
+    </div>
+    <div class="testimonial reveal reveal-delay-1">
+    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+    <p class="testimonial-text">"The team understood our brand immediately. The website captures exactly the luxury vibe we wanted. Our average ticket price went up after launch."</p>
+    <div class="testimonial-author">
+        <div class="testimonial-avatar">AM</div>
+        <div>
+        <div class="testimonial-name">Amina M.</div>
+        <div class="testimonial-role">Founder, Glow Beauty</div>
+        </div>
+    </div>
+    </div>
+    <div class="testimonial reveal reveal-delay-2">
+    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+    <p class="testimonial-text">"Fast, professional, and they actually understand the salon business. The WhatsApp integration alone has saved us hours of phone calls per week."</p>
+    <div class="testimonial-author">
+        <div class="testimonial-avatar">DO</div>
+        <div>
+        <div class="testimonial-name">David O.</div>
+        <div class="testimonial-role">Manager, Elite Cuts</div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+<div class="section-pinned">
+<div class="section-tag">Investment</div>
+<h2 class="section-head">Simple, Transparent Pricing</h2>
+<p class="section-sub">No hidden fees. No surprises. Choose the package that fits your stage of growth. All prices one-time — no monthly website fees from us.</p>
+<div class="pricing-grid">
+    <div class="price-card reveal">
+    <div class="price-name">Starter</div>
+    <div class="price-desc">Perfect for new salons ready to go digital.</div>
+    <div class="price-amount">KES 39,000</div>
+    <div class="price-period">One-time payment</div>
+    <ul class="price-features">
+        <li><i class="fas fa-check"></i> 3-Page Website</li>
+        <li><i class="fas fa-check"></i> Mobile Responsive</li>
+        <li><i class="fas fa-check"></i> Contact Form</li>
+        <li><i class="fas fa-check"></i> Basic SEO Setup</li>
+        <li><i class="fas fa-check"></i> 3 Days Delivery</li>
+        <li><i class="fas fa-xmark" style="color:var(--text-muted)"></i> <span style="color:var(--text-muted)">Online Booking</span></li>
+    </ul>
+    <button class="price-btn price-btn-secondary" onclick="location.href='#contact'">Get Started</button>
+    </div>
+    <div class="price-card featured reveal reveal-delay-1">
+    <div class="price-badge">MOST POPULAR</div>
+    <div class="price-name">Growth</div>
+    <div class="price-desc">For salons serious about scaling their bookings.</div>
+    <div class="price-amount">KES 78,000</div>
+    <div class="price-period">One-time payment</div>
+    <ul class="price-features">
+        <li><i class="fas fa-check"></i> 5-Page Website</li>
+        <li><i class="fas fa-check"></i> Online Booking System</li>
+        <li><i class="fas fa-check"></i> WhatsApp Integration</li>
+        <li><i class="fas fa-check"></i> Google Business Setup</li>
+        <li><i class="fas fa-check"></i> Advanced SEO</li>
+        <li><i class="fas fa-check"></i> 7 Days Delivery</li>
+        <li><i class="fas fa-check"></i> 30 Days Support</li>
+    </ul>
+    <button class="price-btn price-btn-primary" onclick="location.href='#contact'">Get Started</button>
+    </div>
+    <div class="price-card reveal reveal-delay-2">
+    <div class="price-name">Elite</div>
+    <div class="price-desc">Full digital transformation for established brands.</div>
+    <div class="price-amount">KES 156,000</div>
+    <div class="price-period">One-time payment</div>
+    <ul class="price-features">
+        <li><i class="fas fa-check"></i> Unlimited Pages</li>
+        <li><i class="fas fa-check"></i> Custom Booking Portal</li>
+        <li><i class="fas fa-check"></i> E-Commerce / Products</li>
+        <li><i class="fas fa-check"></i> Full SEO & Blog</li>
+        <li><i class="fas fa-check"></i> Brand Identity Kit</li>
+        <li><i class="fas fa-check"></i> Priority Support (60 Days)</li>
+    </ul>
+    <button class="price-btn price-btn-secondary" onclick="location.href='#contact'">Get Started</button>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+<div class="section-pinned">
+<div class="section-tag">FAQ</div>
+<h2 class="section-head">Questions? Answered.</h2>
+<p class="section-sub">Everything you need to know before starting your project with Maiko Digital.</p>
+<div class="faq-list">
+    <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">How long does it take to build my salon website? <i class="fas fa-chevron-down"></i></div>
+    <div class="faq-a"><p>Most projects are delivered within 7 days. Starter packages can be ready in as little as 3 days. We'll give you an exact timeline during our discovery call based on your specific needs.</p></div>
+    </div>
+    <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">Do I need to pay monthly fees for the website? <i class="fas fa-chevron-down"></i></div>
+    <div class="faq-a"><p>No monthly fees from us. You only pay the one-time project fee. You'll need your own domain (about KES 1,500/year) and hosting (we recommend Netlify or Vercel which are free for most sites).</p></div>
+    </div>
+    <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">Can clients book appointments directly on the website? <i class="fas fa-chevron-down"></i></div>
+    <div class="faq-a"><p>Absolutely. Our Growth and Elite packages include built-in booking systems. Clients can select services, choose time slots, and even pay deposits — all without you answering a single call.</p></div>
+    </div>
+    <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">Will my website show up on Google? <i class="fas fa-chevron-down"></i></div>
+    <div class="faq-a"><p>Yes. Every site we build is optimized for search engines from the ground up. We handle technical SEO, speed optimization, and local SEO so you rank when people search "salon near me" in your area.</p></div>
+    </div>
+    <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">What if I don't like the design? <i class="fas fa-chevron-down"></i></div>
+    <div class="faq-a"><p>We offer unlimited revisions during the design phase. We don't move to development until you're 100% happy with the mockup. Your satisfaction is guaranteed.</p></div>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<div class="section-pinned">
+<div class="section-tag">Contact</div>
+<h2 class="section-head">Ready to Fill More Chairs?</h2>
+<p class="section-sub">Book a free 15-minute audit call. We'll review your current online presence and show you exactly how to get more customers — no obligation.</p>
+<div class="contact-wrapper">
+    <div class="contact-info reveal">
+    <h3>Let's Talk Growth</h3>
+    <p>Whether you're ready to start today or just exploring options, we're here to help. Reach out via WhatsApp for the fastest response.</p>
+    <div class="contact-details">
+        <div class="contact-row">
+        <div class="contact-icon-box"><i class="fas fa-location-dot"></i></div>
+        <div><h5>Location</h5><p>Kisii, Kenya</p></div>
+        </div>
+        <div class="contact-row">
+        <div class="contact-icon-box"><i class="fab fa-whatsapp"></i></div>
+        <div><h5>WhatsApp</h5><a href="https://wa.link/94sl4t" target="_blank">wa.link/94sl4t</a></div>
+        </div>
+        <div class="contact-row">
+        <div class="contact-icon-box"><i class="fas fa-envelope"></i></div>
+        <div><h5>Email</h5><a href="mailto:maikodigitalagency01@gmail.com">maikodigitalagency01@gmail.com</a></div>
+        </div>
+        <div class="contact-row">
+        <div class="contact-icon-box"><i class="fas fa-clock"></i></div>
+        <div><h5>Response Time</h5><p>Under 2 hours on WhatsApp</p></div>
+        </div>
+    </div>
+    <a href="https://wa.link/94sl4t" target="_blank" class="whatsapp-cta"><i class="fab fa-whatsapp"></i> Start on WhatsApp</a>
+    </div>
+    <div class="contact-form reveal reveal-delay-1">
+    <form id="contactForm" action="https://formspree.io/f/mojybqdv" method="POST">
+        <div class="form-row">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+            <label>WhatsApp / Phone</label>
+            <input type="tel" name="phone" placeholder="+254 7XX XXX XXX" required>
+        </div>
+        </div>
+        <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="you@salon.com" required>
+        </div>
+        <div class="form-group">
+        <label>Business Name</label>
+        <input type="text" name="business" placeholder="e.g. The Cut Above" required>
+        </div>
+        <div class="form-group">
+        <label>Package Interest</label>
+        <select name="package" required>
+            <option value="">Select a package</option>
+            <option value="starter">Starter — KES 39,000</option>
+            <option value="growth">Growth — KES 78,000</option>
+            <option value="elite">Elite — KES 156,000</option>
+            <option value="not-sure">Not sure yet</option>
+        </select>
+        </div>
+        <div class="form-group">
+        <label>Tell us about your salon</label>
+        <textarea name="message" placeholder="What services do you offer? What's your biggest challenge right now?"></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="formSubmit"><i class="fas fa-paper-plane"></i> Send Message</button>
+    </form>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-grid">
+<div class="footer-brand">
+    <a href="#" class="logo" target="_self"><div class="logo-dot"></div>Maiko Digital</a>
+    <p>Websites that fill chairs. Built for salons and barbershops by people who understand the business.</p>
+</div>
+<div class="footer-col">
+    <h5>Navigate</h5>
+    <ul>
+    <li><a href="#work">Our Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+    </ul>
+</div>
+<div class="footer-col">
+    <h5>Legal</h5>
+    <ul>
+    <li><a onclick="showPopup()">Privacy Policy</a></li>
+    <li><a onclick="showPopup()">Terms of Service</a></li>
+    <li><a onclick="showPopup()">Refund Policy</a></li>
+    </ul>
+</div>
+<div class="footer-col">
+    <h5>Connect</h5>
+    <ul>
+    <li><a href="https://wa.link/94sl4t" target="_blank">WhatsApp</a></li>
+    <li><a href="#">Instagram</a></li>
+    <li><a href="#">Twitter / X</a></li>
+    </ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 Maiko Digital. Crafted in Kisii, Kenya.</p>
+<div class="footer-socials">
+    <a href="#" target="_parent" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" target="_parent" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://wa.link/94sl4t" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+</div>
+</div>
+</footer>
+
+<script>
+// Navbar scroll
+const nav = document.getElementById('navbar');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+const y = window.scrollY;
+nav.classList.toggle('scrolled', y > 50);
+lastScroll = y;
+}, { passive: true });
+
+// Mobile menu
+function toggleMobile() {
+document.getElementById('mobileNav').classList.toggle('open');
+document.body.style.overflow = document.getElementById('mobileNav').classList.contains('open') ? 'hidden' : '';
+}
+
+// FAQ toggle
+function toggleFaq(el) {
+const item = el.parentElement;
+const wasActive = item.classList.contains('active');
+document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+if (!wasActive) item.classList.add('active');
+}
+
+// Intersection Observer for reveals
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+    entry.target.classList.add('visible');
+    observer.unobserve(entry.target);
+}
+});
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth scroll for anchors
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+a.addEventListener('click', function(e) {
+const href = this.getAttribute('href');
+if (href === '#') return;
+const target = document.querySelector(href);
+if (target) {
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+});
+});
+
+// Preview Modal
+function openPreview(url) {
+    document.getElementById('previewFrame').src = url;
+    document.getElementById('previewModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closePreview() {
+    document.getElementById('previewModal').classList.remove('active');
+    document.getElementById('previewFrame').src = '';
+    document.body.style.overflow = '';
+}
+
+// Popup Modal
+function showPopup() {
+    document.getElementById('popupOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closePopup(e) {
+    if (e && e.target !== document.getElementById('popupOverlay') && !e.target.closest('.popup-close-x') && !e.target.closest('.popup-btn')) return;
+    document.getElementById('popupOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Form submission handling
+const form = document.getElementById('contactForm');
+const submitBtn = document.getElementById('formSubmit');
+
+if (form) {
+    form.addEventListener('submit', function(e) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    });
+
+    if (window.location.search.includes('submitted=true')) {
+        submitBtn.classList.add('success');
+        submitBtn.innerHTML = '<i class="fas fa-check"></i> Submitted!';
+        form.reset();
+        setTimeout(() => {
+            submitBtn.classList.remove('success');
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+            submitBtn.disabled = false;
+            if (window.history.replaceState) {
+                window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+            }
+        }, 3000);
+    }
+}
+</script>
+</body>
+</html>
