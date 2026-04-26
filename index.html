@@ -1344,6 +1344,169 @@
             background: var(--accent-warm);
         }
 
+        /* ========== PRICING UPSELLS ========== */
+        .pricing-upsells {
+            margin-top: 6rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .pricing-upsells-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .pricing-upsells-header h3 {
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--ink-dim);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .upsells-line {
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(to right, var(--accent), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+        .upsells-line.right {
+            background: linear-gradient(to left, var(--accent), transparent);
+            animation: scrollPulseRight 2s ease-in-out infinite;
+        }
+        @keyframes scrollPulseRight {
+            0%, 100% { transform: scaleX(0); transform-origin: right; }
+            50% { transform: scaleX(1); transform-origin: right; }
+        }
+        .upsells-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .upsell-card {
+            background: var(--bg-elevated);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 3rem 2.5rem;
+            position: relative;
+            transition: all 0.6s var(--ease-expo);
+            min-width: 0;
+        }
+        .upsell-card:hover {
+            border-color: rgba(201,169,110,0.15);
+            transform: translateY(-4px);
+        }
+        .upsell-badge {
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: var(--bg);
+            padding: 0.4rem 1.5rem;
+            font-family: var(--font-heading);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            border-radius: 0 0 8px 8px;
+        }
+        .upsell-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: var(--ink);
+        }
+        .upsell-subtitle {
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1rem;
+        }
+        .upsell-desc {
+            font-size: 0.9rem;
+            color: var(--ink-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .upsell-price {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+            line-height: 1;
+        }
+        .upsell-price span {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--ink-dim);
+            font-weight: 400;
+        }
+        .upsell-period {
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-dim);
+            margin-bottom: 0.75rem;
+        }
+        .upsell-goal {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        .upsell-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .upsell-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--ink-muted);
+            line-height: 1.5;
+        }
+        .upsell-features li i {
+            color: var(--accent);
+            font-size: 0.7rem;
+            margin-top: 0.35rem;
+            flex-shrink: 0;
+        }
+        .upsell-btn {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 100px;
+            border: 1px solid var(--ink-dim);
+            background: transparent;
+            color: var(--ink);
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.5s var(--ease-expo);
+        }
+        .upsell-btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+        }
+
         /* ========== CONTACT ========== */
         .contact {
             background: var(--bg-elevated);
@@ -1795,6 +1958,10 @@
             .price-card.featured:hover {
                 transform: translateY(-4px);
             }
+            .pricing-upsells {
+                margin-top: 4rem;
+                padding: 0 5vw;
+            }
             .testimonials-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -2042,6 +2209,21 @@
             .price-features li {
                 font-size: 0.85rem;
             }
+            .pricing-upsells {
+                margin-top: 3rem;
+            }
+            .upsells-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+                gap: 1.5rem;
+            }
+            .upsell-card {
+                padding: 2.5rem 1.5rem;
+            }
+            .upsell-price {
+                font-size: 2.5rem;
+            }
 
             /* Metrics */
             .metrics {
@@ -2153,6 +2335,12 @@
                 top: 1rem;
                 right: 1.5rem;
             }
+            .upsell-card {
+                padding: 2rem 1.25rem;
+            }
+            .upsell-price {
+                font-size: 2rem;
+            }
         }
 
         /* Touch device optimizations */
@@ -2176,6 +2364,9 @@
                 transform: none;
             }
             .work-card:hover {
+                transform: none;
+            }
+            .upsell-card:hover {
                 transform: none;
             }
         }
@@ -2703,28 +2894,25 @@
                     <!-- ESSENTIAL -->
                     <div class="price-card reveal">
                         <div class="price-name">Essential</div>
-                        <div class="price-subtitle">Entry Conversion Offer</div>
-                        <div class="price-desc">For salons and barbershops taking their first digital step with intention.</div>
-                        <div class="price-amount">KES 39,000</div>
+                        <div class="price-subtitle">Starter Growth Package</div>
+                        <div class="price-desc">Best for salons/barbershops with no serious online presence.</div>
+                        <div class="price-amount">KES 29,000</div>
                         <div class="price-period">(one-time)</div>
-                        <p class="price-goal">👉 Goal: "Get online and start receiving clients fast"</p>
+                        <p class="price-goal">👉 Goal: "Get online professionally and start receiving inquiries."</p>
                         <ul class="price-features">
-                            <li><i class="fas fa-check"></i> <strong>Core Build</strong></li>
-                            <li><i class="fas fa-check"></i> 3-Page High-Converting Website (Home, Services, Contact)</li>
+                            <li><i class="fas fa-check"></i> 3-Page Custom Website (Home, Services, Contact)</li>
                             <li><i class="fas fa-check"></i> Mobile-First Responsive Design</li>
-                            <li><i class="fas fa-check"></i> Conversion-Optimized Layout (built to get bookings, not just look good)</li>
-                            <li><i class="fas fa-check"></i> <strong>Client Acquisition Basics</strong></li>
+                            <li><i class="fas fa-check"></i> Premium Modern UI</li>
                             <li><i class="fas fa-check"></i> WhatsApp Click-to-Chat Integration</li>
-                            <li><i class="fas fa-check"></i> Call / Contact Buttons everywhere</li>
-                            <li><i class="fas fa-check"></i> Google Maps Embed (location trust boost)</li>
-                            <li><i class="fas fa-check"></i> <strong>Visibility Setup</strong></li>
-                            <li><i class="fas fa-check"></i> Basic SEO Setup (titles, meta, structure, indexing)</li>
-                            <li><i class="fas fa-check"></i> Google Search Submission setup</li>
-                            <li><i class="fas fa-check"></i> <strong>Authority Boost</strong></li>
-                            <li><i class="fas fa-check"></i> Social Media Integration (Instagram, TikTok, Facebook links)</li>
-                            <li><i class="fas fa-check"></i> <strong>Delivery</strong></li>
-                            <li><i class="fas fa-check"></i> 3-Day Fast Delivery</li>
-                            <li><i class="fas fa-check"></i> Basic walkthrough video</li>
+                            <li><i class="fas fa-check"></i> Call Buttons</li>
+                            <li><i class="fas fa-check"></i> Google Maps Embed</li>
+                            <li><i class="fas fa-check"></i> Social Media Links</li>
+                            <li><i class="fas fa-check"></i> Basic SEO Setup</li>
+                            <li><i class="fas fa-check"></i> Google Search Submission Guidance</li>
+                            <li><i class="fas fa-check"></i> Fast Loading Optimization</li>
+                            <li><i class="fas fa-check"></i> Contact Form</li>
+                            <li><i class="fas fa-check"></i> 7-Day Delivery</li>
+                            <li><i class="fas fa-check"></i> 7 Days Support</li>
                         </ul>
                         <button class="price-btn" onclick="location.href='#contact'">Begin Journey</button>
                     </div>
@@ -2733,29 +2921,24 @@
                     <div class="price-card featured reveal d1">
                         <div class="price-badge">Most Chosen</div>
                         <div class="price-name">Growth</div>
-                        <div class="price-subtitle">Money Maker Plan</div>
-                        <div class="price-desc">For salons ready to actively increase bookings and dominate locally.</div>
-                        <div class="price-amount">KES 78,000</div>
+                        <div class="price-subtitle">Booking Booster Package</div>
+                        <div class="price-desc">Best for businesses ready to increase daily bookings.</div>
+                        <div class="price-amount">KES 59,000</div>
                         <div class="price-period">(one-time)</div>
-                        <p class="price-goal">👉 Goal: "Turn traffic into daily bookings"</p>
+                        <p class="price-goal">👉 Goal: "Turn visitors into booked clients."</p>
                         <ul class="price-features">
                             <li><i class="fas fa-check"></i> <strong>Everything in Essential, plus:</strong></li>
-                            <li><i class="fas fa-check"></i> <strong>Booking System (Core Upgrade)</strong></li>
-                            <li><i class="fas fa-check"></i> Integrated Online Booking System</li>
-                            <li><i class="fas fa-check"></i> Service selection + time slots</li>
-                            <li><i class="fas fa-check"></i> Automated booking confirmation (WhatsApp/email)</li>
-                            <li><i class="fas fa-check"></i> <strong>Marketing Engine</strong></li>
-                            <li><i class="fas fa-check"></i> WhatsApp Automation (auto replies + booking prompts)</li>
-                            <li><i class="fas fa-check"></i> Service Menu + Dynamic Pricing Page</li>
-                            <li><i class="fas fa-check"></i> Lead-focused landing structure (built for conversions)</li>
-                            <li><i class="fas fa-check"></i> <strong>Visibility & Ranking</strong></li>
-                            <li><i class="fas fa-check"></i> Google Business Profile Optimization</li>
-                            <li><i class="fas fa-check"></i> Advanced Local SEO (rank in "near me" searches)</li>
-                            <li><i class="fas fa-check"></i> <strong>Analytics</strong></li>
-                            <li><i class="fas fa-check"></i> Visitor tracking setup (basic analytics dashboard)</li>
-                            <li><i class="fas fa-check"></i> Conversion tracking (calls, WhatsApp clicks)</li>
-                            <li><i class="fas fa-check"></i> <strong>Support</strong></li>
-                            <li><i class="fas fa-check"></i> 30 Days Priority Support (fast fixes + guidance)</li>
+                            <li><i class="fas fa-check"></i> Booking Request Form (date/service/time preference)</li>
+                            <li><i class="fas fa-check"></i> Auto Email Confirmation</li>
+                            <li><i class="fas fa-check"></i> Gallery / Portfolio Section</li>
+                            <li><i class="fas fa-check"></i> Testimonials Section</li>
+                            <li><i class="fas fa-check"></i> Conversion-Focused Landing Sections</li>
+                            <li><i class="fas fa-check"></i> Analytics Setup</li>
+                            <li><i class="fas fa-check"></i> WhatsApp Quick Reply Setup Guidance</li>
+                            <li><i class="fas fa-check"></i> Google Business Profile Setup Help</li>
+                            <li><i class="fas fa-check"></i> Priority Design Customization</li>
+                            <li><i class="fas fa-check"></i> 7-Day Delivery</li>
+                            <li><i class="fas fa-check"></i> 14 Days Support</li>
                         </ul>
                         <button class="price-btn price-btn-primary" onclick="location.href='#contact'">Start Growing</button>
                     </div>
@@ -2763,34 +2946,67 @@
                     <!-- SOVEREIGN -->
                     <div class="price-card reveal d2">
                         <div class="price-name">Sovereign</div>
-                        <div class="price-subtitle">Market Domination System</div>
-                        <div class="price-desc">For established salons/barbershops scaling into premium brands.</div>
-                        <div class="price-amount">KES 156,000</div>
+                        <div class="price-subtitle">Premium Brand Package</div>
+                        <div class="price-desc">Best for serious salons wanting premium positioning.</div>
+                        <div class="price-amount">KES 99,000</div>
                         <div class="price-period">(one-time)</div>
-                        <p class="price-goal">👉 Goal: "Become the go-to salon in your area"</p>
+                        <p class="price-goal">👉 Goal: "Become the premium salon people trust first."</p>
                         <ul class="price-features">
-                            <li><i class="fas fa-check"></i> <strong>Full Digital Ecosystem</strong></li>
-                            <li><i class="fas fa-check"></i> Custom Multi-Page Website (unlimited scalable structure)</li>
-                            <li><i class="fas fa-check"></i> High-end UI/UX conversion system (premium feel)</li>
-                            <li><i class="fas fa-check"></i> <strong>Booking Infrastructure</strong></li>
-                            <li><i class="fas fa-check"></i> Custom Booking Portal (advanced scheduling system)</li>
-                            <li><i class="fas fa-check"></i> Staff-based booking (choose barber/stylist)</li>
-                            <li><i class="fas fa-check"></i> Availability management system</li>
-                            <li><i class="fas fa-check"></i> <strong>Brand Power System</strong></li>
-                            <li><i class="fas fa-check"></i> Complete Brand Identity (logo, typography, colors, brand direction)</li>
-                            <li><i class="fas fa-check"></i> Premium visual direction system</li>
-                            <li><i class="fas fa-check"></i> <strong>Authority & Trust Engine</strong></li>
-                            <li><i class="fas fa-check"></i> Staff Profiles + Portfolio Gallery system</li>
-                            <li><i class="fas fa-check"></i> Review & Testimonial automation system (Google + website)</li>
-                            <li><i class="fas fa-check"></i> <strong>Growth Engine</strong></li>
-                            <li><i class="fas fa-check"></i> Full SEO Strategy (keyword targeting + ranking plan)</li>
-                            <li><i class="fas fa-check"></i> Content Strategy Blueprint (what to post, what to rank for)</li>
-                            <li><i class="fas fa-check"></i> Local dominance optimization (maps + search visibility)</li>
-                            <li><i class="fas fa-check"></i> <strong>Support</strong></li>
-                            <li><i class="fas fa-check"></i> 60 Days White-Glove Support (setup help + issue resolution)</li>
-                            <li><i class="fas fa-check"></i> Priority fixes + guided optimization</li>
+                            <li><i class="fas fa-check"></i> <strong>Everything in Growth, plus:</strong></li>
+                            <li><i class="fas fa-check"></i> Multi-Page Premium Website</li>
+                            <li><i class="fas fa-check"></i> Advanced Booking Request Management</li>
+                            <li><i class="fas fa-check"></i> Staff Profiles Section</li>
+                            <li><i class="fas fa-check"></i> Before / After Portfolio System</li>
+                            <li><i class="fas fa-check"></i> Reviews Showcase System</li>
+                            <li><i class="fas fa-check"></i> Brand Kit (colors, fonts, style direction)</li>
+                            <li><i class="fas fa-check"></i> Premium UI/UX Design</li>
+                            <li><i class="fas fa-check"></i> Basic Content Strategy Ideas</li>
+                            <li><i class="fas fa-check"></i> Priority Support</li>
+                            <li><i class="fas fa-check"></i> 7–14 Day Delivery</li>
+                            <li><i class="fas fa-check"></i> 30 Days Support</li>
                         </ul>
                         <button class="price-btn" onclick="location.href='#contact'">Claim Your Throne</button>
+                    </div>
+                </div>
+
+                <!-- Monthly Upsells -->
+                <div class="pricing-upsells">
+                    <div class="pricing-upsells-header">
+                        <div class="upsells-line"></div>
+                        <h3>Monthly Upsells &mdash; Recurring Revenue</h3>
+                        <div class="upsells-line right"></div>
+                    </div>
+                    <div class="upsells-grid">
+                        <div class="upsell-card reveal">
+                            <div class="upsell-badge">Monthly</div>
+                            <div class="upsell-name">Care Plan</div>
+                            <div class="upsell-subtitle">Maintenance & Updates</div>
+                            <div class="upsell-desc">Keep your site alive and current without lifting a finger.</div>
+                            <div class="upsell-price">KES 5,000 <span>/ month</span></div>
+                            <div class="upsell-period">(recurring)</div>
+                            <p class="upsell-goal">👉 Goal: "Stay fresh without the hassle."</p>
+                            <ul class="upsell-features">
+                                <li><i class="fas fa-check"></i> Text / image updates</li>
+                                <li><i class="fas fa-check"></i> Minor edits</li>
+                                <li><i class="fas fa-check"></i> Dedicated support</li>
+                            </ul>
+                            <button class="upsell-btn" onclick="location.href='#contact'">Subscribe</button>
+                        </div>
+                        <div class="upsell-card reveal d1">
+                            <div class="upsell-badge">Monthly</div>
+                            <div class="upsell-name">Growth Plan</div>
+                            <div class="upsell-subtitle">Scale With Intent</div>
+                            <div class="upsell-desc">Active growth work to push your salon further every month.</div>
+                            <div class="upsell-price">KES 12,000 <span>/ month</span></div>
+                            <div class="upsell-period">(recurring)</div>
+                            <p class="upsell-goal">👉 Goal: "Outrank and outperform competitors."</p>
+                            <ul class="upsell-features">
+                                <li><i class="fas fa-check"></i> Monthly landing page offers</li>
+                                <li><i class="fas fa-check"></i> SEO basics</li>
+                                <li><i class="fas fa-check"></i> Performance checks</li>
+                            </ul>
+                            <button class="upsell-btn" onclick="location.href='#contact'">Subscribe</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2830,9 +3046,11 @@
                         <label>Package Interest</label>
                         <select name="package" required>
                             <option value="">Select your path</option>
-                            <option value="essential">Essential — KES 39,000</option>
-                            <option value="growth">Growth — KES 78,000</option>
-                            <option value="sovereign">Sovereign — KES 156,000</option>
+                            <option value="essential">Essential — KES 29,000</option>
+                            <option value="growth">Growth — KES 59,000</option>
+                            <option value="sovereign">Sovereign — KES 99,000</option>
+                            <option value="care-plan">Care Plan — KES 5,000/mo</option>
+                            <option value="growth-plan">Growth Plan — KES 12,000/mo</option>
                             <option value="not-sure">Not sure yet</option>
                         </select>
                     </div>
