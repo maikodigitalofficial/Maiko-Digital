@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Maiko Digital — Award-winning web design for salons and barbershops.">
-    <title>Maiko Digital | Award-Winning Salon Web Design</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Maiko Digital — Award-winning web design for salons and barbershops. Crafted in Kisii, Kenya.">
+    <title>Maiko Digital | Kisii, Kenya — Salon Web Design</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,12 +20,13 @@
             --bg-elevated: #12121a;
             --surface: #1a1a24;
             --ink: #f0f0f5;
-            --ink-muted: #8a8a9a;
-            --ink-dim: #4a4a5c;
-            --accent: #e8d5b7;
-            --accent-warm: #d4a574;
-            --accent-deep: #c49363;
-            --rose: #c9a9a6;
+            --ink-muted: #a0a0b0;
+            --ink-dim: #6a6a7c;
+            --accent: #c9a96e;
+            --accent-warm: #b8956a;
+            --accent-deep: #a67c52;
+            --terracotta: #c4705a;
+            --forest: #4a6741;
             --font-display: 'Playfair Display', serif;
             --font-heading: 'Space Grotesk', sans-serif;
             --font-body: 'Inter', system-ui, sans-serif;
@@ -39,6 +40,8 @@
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            -webkit-text-size-adjust: 100%;
+            overflow-x: hidden;
         }
 
         body {
@@ -49,6 +52,15 @@
             line-height: 1.6;
             font-size: 16px;
             cursor: none;
+            -webkit-tap-highlight-color: transparent;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         ::selection { background: var(--accent); color: var(--bg); }
@@ -89,8 +101,8 @@
             inset: 0;
             z-index: 9998;
             pointer-events: none;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         /* Scrollbar */
@@ -99,53 +111,66 @@
         ::-webkit-scrollbar-thumb { background: var(--ink-dim); border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-        /* Navigation */
+        /* ========== NAVIGATION ========== */
         .nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 100;
-            padding: 2rem 4vw;
-            display: flex;
-            justify-content: space-between;
+            padding: 1.5rem 4vw;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
             align-items: center;
+            gap: 3rem;
             transition: all 0.8s var(--ease-expo);
+            border-bottom: 1px solid transparent;
         }
         .nav.scrolled {
-            background: rgba(10,10,15,0.85);
+            background: rgba(10,10,15,0.95);
             backdrop-filter: blur(30px);
-            padding: 1.2rem 4vw;
+            -webkit-backdrop-filter: blur(30px);
+            padding: 1rem 4vw;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .nav-logo {
             font-family: var(--font-display);
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 500;
             color: var(--ink);
             text-decoration: none;
             letter-spacing: -0.02em;
             position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
-        .nav-logo::after {
+        .nav-logo::before {
             content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--accent);
-            transition: width 0.6s var(--ease-expo);
+            width: 10px;
+            height: 10px;
+            background: var(--terracotta);
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 2s infinite;
         }
-        .nav-logo:hover::after { width: 100%; }
+        .nav-center {
+            display: flex;
+            justify-content: center;
+        }
         .nav-links {
             display: flex;
-            gap: 3rem;
+            gap: 2.5rem;
             align-items: center;
             list-style: none;
+            background: rgba(255,255,255,0.03);
+            padding: 0.6rem 2rem;
+            border-radius: 100px;
+            border: 1px solid rgba(255,255,255,0.06);
         }
         .nav-links a {
             font-family: var(--font-heading);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.15em;
             color: var(--ink-muted);
@@ -171,125 +196,341 @@
         .nav-links a:hover::before {
             width: 100%;
         }
+        .nav-meta {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .nav-location {
+            font-family: var(--font-heading);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--ink-dim);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .nav-location::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--forest);
+            border-radius: 50%;
+        }
         .nav-cta {
             position: relative;
-            padding: 0.9rem 2rem;
-            border: 1px solid var(--ink-dim);
+            padding: 0.8rem 1.8rem;
+            background: var(--accent);
             border-radius: 100px;
             font-family: var(--font-heading);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.15em;
-            color: var(--ink);
+            color: var(--bg);
             text-decoration: none;
             transition: all 0.5s var(--ease-expo);
             overflow: hidden;
-        }
-        .nav-cta::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--accent);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.6s var(--ease-expo);
-            z-index: -1;
+            font-weight: 600;
+            white-space: nowrap;
         }
         .nav-cta:hover {
-            color: var(--bg);
-            border-color: var(--accent);
-        }
-        .nav-cta:hover::before {
-            transform: scaleX(1);
-            transform-origin: left;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(201,169,110,0.3);
         }
 
-        /* Hero — Cinematic */
+        /* Mobile Menu Toggle */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 101;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--ink);
+            transition: all 0.4s var(--ease-expo);
+            border-radius: 2px;
+        }
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile Menu Drawer */
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            background: rgba(10,10,15,0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s var(--ease-expo);
+        }
+        .mobile-menu.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .mobile-menu a {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--ink);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .mobile-menu a:hover {
+            color: var(--accent);
+        }
+        .mobile-menu .nav-cta {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            padding: 1rem 2.5rem;
+        }
+
+        /* ========== HERO ========== */
         .hero {
             min-height: 100dvh;
             position: relative;
-            display: flex;
-            align-items: flex-end;
-            padding: 0 4vw 8vh;
+            display: grid;
+            grid-template-columns: 55% 45%;
             overflow: hidden;
+            padding-top: 80px;
         }
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
+        .hero-left {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 4vw 6rem 6vw;
+            z-index: 2;
+            min-width: 0;
         }
-        .hero-bg img {
+        .hero-right {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            gap: 0.75rem;
+            padding: 1rem;
+            height: 150vh;
+            mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+        }
+
+        /* Infinite Scroll Columns */
+        .scroll-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            position: relative;
+            min-width: 0;
+        }
+        .scroll-track {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .scroll-column.up .scroll-track {
+            animation: scrollUp 35s linear infinite;
+        }
+        .scroll-column.down .scroll-track {
+            animation: scrollDown 40s linear infinite;
+        }
+        .scroll-column.up .scroll-track:hover,
+        .scroll-column.down .scroll-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+        @keyframes scrollDown {
+            0% { transform: translateY(-50%); }
+            100% { transform: translateY(0); }
+        }
+
+        .scroll-img {
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+            flex-shrink: 0;
+            aspect-ratio: 3/4;
+        }
+        .scroll-img.wide {
+            aspect-ratio: 4/3;
+        }
+        .scroll-img.tall {
+            aspect-ratio: 2/3;
+        }
+        .scroll-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.4;
-            filter: saturate(0.3) contrast(1.2);
-            transform: scale(1.1);
+            filter: saturate(0.25) contrast(1.15) brightness(0.65);
+            transition: all 0.8s var(--ease-smooth);
+            transform: scale(1.02);
         }
-        .hero-vignette {
+        .scroll-img:hover img {
+            filter: saturate(0.55) contrast(1.05) brightness(0.75);
+            transform: scale(1.06);
+        }
+        .scroll-img::after {
+            content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at center, transparent 0%, var(--bg) 70%);
-            z-index: 1;
+            background: linear-gradient(135deg, rgba(10,10,15,0.35) 0%, transparent 50%);
+            pointer-events: none;
         }
-        .hero-content {
-            position: relative;
+        .scroll-img-label {
+            position: absolute;
+            bottom: 0.75rem;
+            left: 0.75rem;
             z-index: 2;
-            max-width: 900px;
+            font-family: var(--font-heading);
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--ink);
+            background: rgba(10,10,15,0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 0.35rem 0.7rem;
+            border-radius: 4px;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.4s var(--ease-expo);
         }
-        .hero-label {
+        .scroll-img:hover .scroll-img-label {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Content Styling */
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .hero-eyebrow-line {
+            width: 50px;
+            height: 1px;
+            background: var(--accent);
+        }
+        .hero-eyebrow-text {
             font-family: var(--font-heading);
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.3em;
             color: var(--accent);
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .hero-label::before {
-            content: '';
-            width: 40px;
-            height: 1px;
-            background: var(--accent);
+            font-weight: 500;
         }
         .hero h1 {
             font-family: var(--font-display);
-            font-size: clamp(3.5rem, 8vw, 8rem);
+            font-size: clamp(2.5rem, 5.5vw, 6rem);
             font-weight: 400;
-            line-height: 1;
+            line-height: 1.05;
             letter-spacing: -0.03em;
             margin-bottom: 2rem;
         }
-        .hero h1 em {
+        .hero h1 .line-1 {
+            display: block;
+            color: var(--ink);
+        }
+        .hero h1 .line-2 {
+            display: block;
             font-style: italic;
             color: var(--accent);
-            display: block;
+            padding-left: 2rem;
+            position: relative;
+        }
+        .hero h1 .line-2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 1.5rem;
+            height: 2px;
+            background: var(--terracotta);
+            transform: translateY(-50%);
         }
         .hero-desc {
             font-family: var(--font-heading);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--ink-muted);
             max-width: 480px;
             line-height: 1.8;
             margin-bottom: 3rem;
             font-weight: 300;
+            padding-left: 2rem;
+            border-left: 1px solid var(--ink-dim);
         }
-        .hero-cta {
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding-left: 2rem;
+            flex-wrap: wrap;
+        }
+        .hero-cta-primary {
             display: inline-flex;
             align-items: center;
             gap: 1rem;
+            padding: 1rem 2.2rem;
+            background: var(--accent);
+            color: var(--bg);
             font-family: var(--font-heading);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 100px;
+            transition: all 0.5s var(--ease-expo);
+            white-space: nowrap;
+        }
+        .hero-cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(201,169,110,0.25);
+        }
+        .hero-cta-primary i {
+            transition: transform 0.4s var(--ease-expo);
+        }
+        .hero-cta-primary:hover i {
+            transform: translateX(4px);
+        }
+        .hero-cta-secondary {
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.15em;
-            color: var(--accent);
+            color: var(--ink-muted);
             text-decoration: none;
             position: relative;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.3rem;
+            transition: color 0.4s;
+            white-space: nowrap;
         }
-        .hero-cta::after {
+        .hero-cta-secondary::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -301,48 +542,83 @@
             transform-origin: right;
             transition: transform 0.6s var(--ease-expo);
         }
-        .hero-cta:hover::after {
+        .hero-cta-secondary:hover {
+            color: var(--accent);
+        }
+        .hero-cta-secondary:hover::after {
             transform: scaleX(1);
             transform-origin: left;
         }
-        .hero-cta i {
-            transition: transform 0.4s var(--ease-expo);
-        }
-        .hero-cta:hover i {
-            transform: translateX(8px);
-        }
-        .hero-scroll {
+
+        /* Hero Bottom Bar */
+        .hero-bottom-bar {
             position: absolute;
-            right: 4vw;
-            bottom: 8vh;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: grid;
+            grid-template-columns: 55% 45%;
+            z-index: 3;
+            background: linear-gradient(to top, var(--bg), transparent);
+            pointer-events: none;
+        }
+        .hero-bottom-left {
+            padding: 2rem 4vw 2rem 6vw;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            pointer-events: auto;
+            flex-wrap: wrap;
+        }
+        .hero-stat {
             display: flex;
             flex-direction: column;
+            gap: 0.25rem;
+        }
+        .hero-stat-num {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--accent);
+            line-height: 1;
+        }
+        .hero-stat-label {
+            font-family: var(--font-heading);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--ink-dim);
+        }
+        .hero-bottom-right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 2rem;
+            gap: 1.5rem;
+            pointer-events: auto;
+        }
+        .hero-scroll-hint {
+            display: flex;
             align-items: center;
             gap: 1rem;
-            z-index: 2;
-        }
-        .hero-scroll span {
             font-family: var(--font-heading);
             font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 0.2em;
             color: var(--ink-dim);
-            writing-mode: vertical-rl;
         }
-        .scroll-line {
-            width: 1px;
-            height: 60px;
-            background: linear-gradient(to bottom, var(--accent), transparent);
+        .hero-scroll-line {
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(to right, var(--accent), transparent);
             animation: scrollPulse 2s ease-in-out infinite;
         }
         @keyframes scrollPulse {
-            0%, 100% { transform: scaleY(0); transform-origin: top; }
-            50% { transform: scaleY(1); transform-origin: top; }
-            51% { transform-origin: bottom; }
-            100% { transform: scaleY(0); transform-origin: bottom; }
+            0%, 100% { transform: scaleX(0); transform-origin: left; }
+            50% { transform: scaleX(1); transform-origin: left; }
         }
 
-        /* Marquee */
+        /* ========== MARQUEE ========== */
         .marquee-section {
             padding: 4rem 0;
             overflow: hidden;
@@ -356,7 +632,7 @@
         }
         .marquee-item {
             font-family: var(--font-display);
-            font-size: clamp(2rem, 5vw, 4rem);
+            font-size: clamp(1.5rem, 5vw, 4rem);
             font-style: italic;
             color: transparent;
             -webkit-text-stroke: 1px var(--ink-dim);
@@ -373,7 +649,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Sections */
+        /* ========== SECTIONS ========== */
         section { padding: 10rem 4vw; position: relative; }
         .section-pinned { max-width: 1400px; margin: 0 auto; }
         .section-label {
@@ -395,7 +671,7 @@
         }
         .section-head {
             font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5vw, 5rem);
+            font-size: clamp(2rem, 5vw, 5rem);
             font-weight: 400;
             line-height: 1.1;
             letter-spacing: -0.02em;
@@ -414,10 +690,8 @@
             font-weight: 300;
         }
 
-        /* Philosophy */
-        .philosophy {
-            background: var(--bg-elevated);
-        }
+        /* ========== PHILOSOPHY ========== */
+        .philosophy { background: var(--bg-elevated); }
         .philosophy-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -435,11 +709,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: saturate(0.4) contrast(1.1);
+            filter: saturate(0.5) contrast(1.1);
             transition: all 1s var(--ease-smooth);
         }
         .philosophy-visual:hover img {
-            filter: saturate(0.8) contrast(1);
+            filter: saturate(0.9) contrast(1);
             transform: scale(1.02);
         }
         .philosophy-visual::after {
@@ -485,103 +759,264 @@
             line-height: 1.8;
         }
 
-        /* Work — Editorial Grid */
-        .work { background: var(--bg); }
-        .work-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 1.5rem;
-            margin-top: 5rem;
+        /* ========== WORK (Horizontal Scroll Gallery) ========== */
+        .work {
+            background: var(--bg);
+            padding: 10rem 0;
+            overflow: hidden;
         }
-        .work-item {
+
+        .work-header {
+            padding: 0 4vw;
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+        }
+
+        .work-gallery-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            cursor: grab;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 2rem 0;
             position: relative;
-            border-radius: 4px;
+            contain: layout;
+        }
+
+        .work-gallery-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .work-gallery-wrapper:active {
+            cursor: grabbing;
+        }
+
+        .work-gallery {
+            display: flex;
+            gap: 2rem;
+            padding: 0 4vw;
+            width: max-content;
+        }
+
+        .work-card {
+            position: relative;
+            width: clamp(320px, 28vw, 480px);
+            flex-shrink: 0;
+            border-radius: 8px;
             overflow: hidden;
             cursor: pointer;
+            transition: transform 0.6s var(--ease-expo);
+            min-width: 0;
         }
-        .work-item:nth-child(1) { grid-column: 1 / 8; grid-row: 1 / 3; }
-        .work-item:nth-child(2) { grid-column: 8 / 13; grid-row: 1 / 2; }
-        .work-item:nth-child(3) { grid-column: 8 / 13; grid-row: 2 / 3; }
-        .work-item:nth-child(4) { grid-column: 1 / 6; grid-row: 3 / 4; }
-        .work-item:nth-child(5) { grid-column: 6 / 13; grid-row: 3 / 5; }
 
-        .work-item img {
+        .work-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .work-card-visual {
+            position: relative;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .work-card-visual img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: saturate(0.3) brightness(0.7);
-            transition: all 0.8s var(--ease-smooth);
-        }
-        .work-item:hover img {
-            filter: saturate(0.8) brightness(0.9);
+            filter: saturate(0.35) brightness(0.65);
+            transition: all 1.2s var(--ease-smooth);
             transform: scale(1.05);
         }
-        .work-overlay {
+
+        .work-card:hover .work-card-visual img {
+            filter: saturate(0.7) brightness(0.8);
+            transform: scale(1.12);
+        }
+
+        .work-card-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(10,10,15,0.9) 0%, transparent 60%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 2rem;
-            opacity: 0;
+            background: linear-gradient(
+                to top,
+                rgba(10, 10, 15, 0.95) 0%,
+                rgba(10, 10, 15, 0.4) 40%,
+                transparent 70%
+            );
+            opacity: 0.8;
             transition: opacity 0.5s var(--ease-expo);
         }
-        .work-item:hover .work-overlay {
+
+        .work-card:hover .work-card-overlay {
             opacity: 1;
         }
-        .work-type {
+
+        .work-card-num {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--accent);
+            opacity: 0.6;
+            letter-spacing: 0.1em;
+        }
+
+        .work-card-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            z-index: 2;
+        }
+
+        .work-card-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+            align-items: center;
+        }
+
+        .work-card-type {
             font-family: var(--font-heading);
             font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 0.2em;
             color: var(--accent);
-            margin-bottom: 0.5rem;
+            font-weight: 600;
         }
-        .work-title {
+
+        .work-card-location {
+            font-family: var(--font-heading);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--ink-dim);
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .work-card-location::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--ink-dim);
+            border-radius: 50%;
+        }
+
+        .work-card-title {
             font-family: var(--font-display);
-            font-size: 1.8rem;
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
             font-weight: 400;
-            margin-bottom: 0.5rem;
+            color: var(--ink);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
         }
-        .work-result {
+
+        .work-card-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+        }
+
+        .work-card-result {
             font-family: var(--font-heading);
             font-size: 0.8rem;
             color: var(--ink-muted);
+            font-weight: 500;
         }
-        .work-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        .work-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.4rem;
-            border-radius: 100px;
+
+        .work-card-cta {
             font-family: var(--font-heading);
             font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.4s var(--ease-expo);
-            border: 1px solid var(--accent);
+            letter-spacing: 0.15em;
             color: var(--accent);
-            background: transparent;
-            cursor: pointer;
-        }
-        .work-btn:hover {
-            background: var(--accent);
-            color: var(--bg);
-            transform: translateY(-2px);
-        }
-        .work-btn i {
-            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.4s var(--ease-expo);
         }
 
-        /* Metrics */
+        .work-card:hover .work-card-cta {
+            gap: 0.75rem;
+        }
+
+        /* Progress Bar */
+        .work-progress {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding: 0 4vw;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .work-progress-track {
+            flex: 1;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .work-progress-fill {
+            height: 100%;
+            width: 100%;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: transform 0.1s linear;
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+
+        .work-progress-text {
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            color: var(--ink-dim);
+            letter-spacing: 0.1em;
+            min-width: 3rem;
+            text-align: right;
+        }
+
+        .work-progress-text span {
+            color: var(--accent);
+        }
+
+        /* Scroll Hint */
+        .work-scroll-hint {
+            max-width: 1400px;
+            margin: 1.5rem auto 0;
+            padding: 0 4vw;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--ink-dim);
+        }
+
+        .work-scroll-line {
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(to right, var(--accent), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        /* ========== METRICS ========== */
         .metrics {
             background: var(--bg-elevated);
             padding: 6rem 4vw;
@@ -610,7 +1045,7 @@
         .metric:last-child::after { display: none; }
         .metric-num {
             font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2rem, 5vw, 4rem);
             font-weight: 400;
             color: var(--accent);
             line-height: 1;
@@ -624,10 +1059,8 @@
             color: var(--ink-muted);
         }
 
-        /* Process — Timeline */
-        .process {
-            background: var(--bg);
-        }
+        /* ========== PROCESS ========== */
+        .process { background: var(--bg); }
         .process-timeline {
             margin-top: 5rem;
             position: relative;
@@ -667,7 +1100,7 @@
             height: 12px;
             background: var(--accent);
             border-radius: 50%;
-            box-shadow: 0 0 30px rgba(232,213,183,0.3);
+            box-shadow: 0 0 30px rgba(201,169,110,0.3);
         }
         .process-num {
             font-family: var(--font-display);
@@ -693,10 +1126,8 @@
             margin-left: auto;
         }
 
-        /* Testimonials — Cards */
-        .testimonials {
-            background: var(--bg-elevated);
-        }
+        /* ========== TESTIMONIALS ========== */
+        .testimonials { background: var(--bg-elevated); }
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -713,7 +1144,7 @@
         }
         .testimonial-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(232,213,183,0.2);
+            border-color: rgba(201,169,110,0.2);
             box-shadow: 0 30px 60px rgba(0,0,0,0.3);
         }
         .testimonial-card::before {
@@ -744,7 +1175,7 @@
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), var(--rose));
+            background: linear-gradient(135deg, var(--accent), var(--terracotta));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -752,6 +1183,7 @@
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--bg);
+            flex-shrink: 0;
         }
         .testimonial-name {
             font-family: var(--font-heading);
@@ -763,7 +1195,7 @@
             color: var(--ink-dim);
         }
 
-        /* Pricing — Minimal */
+        /* ========== PRICING ========== */
         .pricing { background: var(--bg); }
         .pricing-grid {
             display: grid;
@@ -779,14 +1211,15 @@
             padding: 3rem 2.5rem;
             position: relative;
             transition: all 0.6s var(--ease-expo);
+            min-width: 0;
         }
         .price-card:hover {
-            border-color: rgba(232,213,183,0.15);
+            border-color: rgba(201,169,110,0.15);
             transform: translateY(-4px);
         }
         .price-card.featured {
             background: var(--surface);
-            border-color: rgba(232,213,183,0.2);
+            border-color: rgba(201,169,110,0.2);
             transform: scale(1.02);
         }
         .price-card.featured:hover {
@@ -812,6 +1245,14 @@
             font-size: 1.5rem;
             font-weight: 400;
             margin-bottom: 0.5rem;
+        }
+        .price-subtitle {
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1rem;
         }
         .price-desc {
             font-size: 0.9rem;
@@ -839,7 +1280,15 @@
             text-transform: uppercase;
             letter-spacing: 0.1em;
             color: var(--ink-dim);
-            margin-bottom: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .price-goal {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
         }
         .price-features {
             list-style: none;
@@ -850,14 +1299,21 @@
         }
         .price-features li {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 0.8rem;
             font-size: 0.9rem;
             color: var(--ink-muted);
+            line-height: 1.5;
         }
         .price-features li i {
             color: var(--accent);
             font-size: 0.7rem;
+            margin-top: 0.35rem;
+            flex-shrink: 0;
+        }
+        .price-features li strong {
+            color: var(--ink);
+            font-weight: 600;
         }
         .price-btn {
             width: 100%;
@@ -888,7 +1344,7 @@
             background: var(--accent-warm);
         }
 
-        /* Contact — Split */
+        /* ========== CONTACT ========== */
         .contact {
             background: var(--bg-elevated);
             padding: 0;
@@ -904,7 +1360,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: saturate(0.3) brightness(0.6);
+            filter: saturate(0.4) brightness(0.6);
         }
         .contact-visual::after {
             content: '';
@@ -944,7 +1400,7 @@
             border-bottom: 1px solid var(--ink-dim);
             color: var(--ink);
             font-family: var(--font-body);
-            font-size: 1rem;
+            font-size: 16px; /* Prevents iOS zoom */
             transition: border-color 0.4s;
             border-radius: 0;
         }
@@ -961,9 +1417,16 @@
         .form-group select {
             cursor: pointer;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234a4a5c' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236a6a7c' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 0 center;
+            background-color: transparent;
+        }
+        .form-group select option {
+            background: var(--bg-elevated);
+            color: var(--ink);
+            padding: 0.5rem;
         }
         .form-submit {
             margin-top: 2rem;
@@ -986,10 +1449,10 @@
         }
         .form-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(232,213,183,0.2);
+            box-shadow: 0 10px 40px rgba(201,169,110,0.2);
         }
 
-        /* Footer */
+        /* ========== FOOTER ========== */
         footer {
             background: var(--bg);
             padding: 4rem 4vw 2rem;
@@ -1063,6 +1526,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
         .footer-bottom p {
             font-size: 0.8rem;
@@ -1091,7 +1556,7 @@
             transform: translateY(-3px);
         }
 
-        /* Preview Modal */
+        /* ========== PREVIEW MODAL ========== */
         .preview-modal {
             position: fixed;
             inset: 0;
@@ -1114,6 +1579,7 @@
             padding: 1.2rem 2rem;
             border-bottom: 1px solid rgba(255,255,255,0.08);
             background: var(--bg-elevated);
+            flex-shrink: 0;
         }
         .preview-header h4 {
             font-size: 0.8rem;
@@ -1150,6 +1616,7 @@
             cursor: pointer;
             transition: all 0.3s;
             font-size: 0.9rem;
+            flex-shrink: 0;
         }
         .preview-close:hover {
             border-color: var(--accent);
@@ -1169,11 +1636,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            flex-shrink: 0;
         }
         .preview-url {
-            font-family: var(--font-mono);
+            font-family: monospace;
             font-size: 0.75rem;
             color: var(--ink-dim);
+            word-break: break-all;
         }
         .preview-external {
             font-family: var(--font-heading);
@@ -1186,12 +1657,13 @@
             align-items: center;
             gap: 0.5rem;
             transition: opacity 0.3s;
+            white-space: nowrap;
         }
         .preview-external:hover {
             opacity: 0.7;
         }
 
-        /* Reveal Animations */
+        /* ========== REVEAL ANIMATIONS ========== */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -1229,53 +1701,7 @@
             transform: scale(1);
         }
 
-        /* Mobile */
-        @media (max-width: 1024px) {
-            .work-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .work-item:nth-child(1),
-            .work-item:nth-child(2),
-            .work-item:nth-child(3),
-            .work-item:nth-child(4),
-            .work-item:nth-child(5) {
-                grid-column: auto;
-                grid-row: auto;
-            }
-            .philosophy-grid,
-            .contact {
-                grid-template-columns: 1fr;
-            }
-            .contact-visual { display: none; }
-        }
-        @media (max-width: 768px) {
-            body { cursor: auto; }
-            .cursor, .cursor-dot { display: none; }
-            .nav-links { display: none; }
-            .philosophy-grid,
-            .process-step,
-            .testimonials-grid,
-            .pricing-grid,
-            .metrics-grid,
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            .process-timeline::before,
-            .process-dot,
-            .metric::after { display: none; }
-            .process-step:nth-child(even) .process-content,
-            .process-step:nth-child(even) .process-visual {
-                grid-column: auto;
-                text-align: left;
-            }
-            .process-step:nth-child(even) .process-content p {
-                margin-left: 0;
-            }
-            section { padding: 6rem 4vw; }
-            .footer-bottom { flex-direction: column; gap: 1rem; }
-        }
-
-        /* Loader */
+        /* ========== LOADER ========== */
         .loader {
             position: fixed;
             inset: 0;
@@ -1310,24 +1736,471 @@
             0%, 100% { transform: scaleX(0); }
             50% { transform: scaleX(1); }
         }
+
+        /* ============================================================
+           TABLET BREAKPOINT (max-width: 1024px)
+           ============================================================ */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                overflow: hidden;
+            }
+            .hero-right {
+                display: none;
+            }
+            .hero-bottom-bar {
+                grid-template-columns: 1fr;
+                position: relative;
+                background: linear-gradient(to top, var(--bg) 60%, transparent);
+            }
+            .hero-bottom-right {
+                display: none;
+            }
+            .hero-bottom-left {
+                padding: 2rem 4vw;
+                justify-content: center;
+                gap: 2.5rem;
+            }
+            .work-card {
+                width: clamp(280px, 40vw, 380px);
+            }
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+            .philosophy-visual {
+                max-width: 500px;
+                margin: 0 auto;
+                width: 100%;
+            }
+            .contact {
+                grid-template-columns: 1fr;
+            }
+            .contact-visual { display: none; }
+            .contact-form-wrap {
+                max-width: 700px;
+                margin: 0 auto;
+                padding: 6rem 6vw;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+                margin: 5rem auto 0;
+            }
+            .price-card.featured {
+                transform: none;
+                order: -1;
+            }
+            .price-card.featured:hover {
+                transform: translateY(-4px);
+            }
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .process-timeline::before {
+                left: 20px;
+            }
+            .process-step {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding-left: 3rem;
+                margin-bottom: 4rem;
+            }
+            .process-step:nth-child(even) .process-content,
+            .process-step:nth-child(even) .process-visual {
+                grid-column: auto;
+                text-align: left;
+            }
+            .process-step:nth-child(even) .process-content p {
+                margin-left: 0;
+            }
+            .process-dot {
+                left: 20px;
+            }
+            .process-num {
+                font-size: 4rem;
+            }
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            .metric::after {
+                display: none;
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
+        }
+
+        /* ============================================================
+           MOBILE BREAKPOINT (max-width: 768px)
+           ============================================================ */
+        @media (max-width: 768px) {
+            body {
+                cursor: auto;
+                font-size: 15px;
+            }
+            .cursor, .cursor-dot { display: none; }
+
+            /* Navigation */
+            .nav {
+                padding: 1rem 5vw;
+                grid-template-columns: auto auto;
+                gap: 1rem;
+            }
+            .nav.scrolled {
+                padding: 0.75rem 5vw;
+            }
+            .nav-center { display: none; }
+            .nav-meta .nav-location { display: none; }
+            .nav-cta {
+                padding: 0.65rem 1.2rem;
+                font-size: 0.65rem;
+            }
+            .nav-toggle {
+                display: flex;
+                order: 2;
+            }
+            .nav-meta {
+                order: 1;
+                margin-left: auto;
+                gap: 1rem;
+            }
+
+            /* Hero */
+            .hero {
+                padding-top: 70px;
+                min-height: auto;
+                overflow: hidden;
+            }
+            .hero-left {
+                padding: 4rem 5vw 3rem;
+                text-align: center;
+                min-width: 0;
+            }
+            .hero-eyebrow {
+                justify-content: center;
+                margin-bottom: 1.5rem;
+            }
+            .hero-eyebrow-line {
+                width: 30px;
+            }
+            .hero h1 {
+                font-size: clamp(2.2rem, 10vw, 3.5rem);
+                margin-bottom: 1.5rem;
+            }
+            .hero h1 .line-2 {
+                padding-left: 0;
+            }
+            .hero h1 .line-2::before {
+                display: none;
+            }
+            .hero-desc {
+                padding-left: 0;
+                border-left: none;
+                margin: 0 auto 2rem;
+                font-size: 1rem;
+                max-width: 100%;
+            }
+            .hero-actions {
+                padding-left: 0;
+                justify-content: center;
+                flex-direction: column;
+                gap: 1.5rem;
+                width: 100%;
+            }
+            .hero-cta-primary,
+            .hero-cta-secondary {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+            .hero-bottom-left {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+                padding: 2rem 5vw;
+            }
+            .hero-stat-num {
+                font-size: 2.2rem;
+            }
+
+            /* Sections */
+            section { padding: 5rem 5vw; }
+            .section-head {
+                font-size: clamp(1.8rem, 8vw, 2.5rem);
+            }
+            .section-sub {
+                font-size: 1rem;
+            }
+
+            /* Work */
+            .work {
+                padding: 5rem 0;
+            }
+
+            .work-header {
+                padding: 0 5vw;
+                margin-bottom: 2.5rem;
+            }
+
+            .work-gallery {
+                gap: 1.25rem;
+                padding: 0 5vw;
+            }
+
+            .work-card {
+                width: 85vw;
+                max-width: 340px;
+                min-width: 0;
+            }
+
+            .work-card-visual {
+                aspect-ratio: 4/5;
+            }
+
+            .work-card-info {
+                padding: 1.5rem;
+            }
+
+            .work-progress {
+                padding: 0 5vw;
+                margin-top: 2rem;
+            }
+
+            .work-scroll-hint {
+                padding: 0 5vw;
+            }
+
+            /* Philosophy */
+            .philosophy-grid {
+                margin-top: 3rem;
+                gap: 3rem;
+            }
+            .philosophy-number {
+                font-size: 5rem;
+                bottom: 1rem;
+                right: 1rem;
+            }
+            .philosophy-content {
+                gap: 2rem;
+            }
+            .phil-item {
+                padding-left: 1.25rem;
+            }
+
+            /* Process */
+            .process-timeline {
+                margin-top: 3rem;
+            }
+            .process-timeline::before {
+                left: 12px;
+            }
+            .process-step {
+                padding-left: 2.5rem;
+                margin-bottom: 3rem;
+            }
+            .process-dot {
+                left: 12px;
+                width: 10px;
+                height: 10px;
+            }
+            .process-num {
+                font-size: 3rem;
+            }
+            .process-content h3 {
+                font-size: 1.5rem;
+            }
+
+            /* Testimonials */
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                margin-top: 3rem;
+                gap: 1.5rem;
+            }
+            .testimonial-card {
+                padding: 2rem 1.5rem;
+            }
+            .testimonial-text {
+                font-size: 0.95rem;
+            }
+
+            /* Pricing */
+            .pricing-grid {
+                margin-top: 3rem;
+                gap: 1.5rem;
+            }
+            .price-card {
+                padding: 2.5rem 1.5rem;
+                min-width: 0;
+            }
+            .price-amount {
+                font-size: 2.5rem;
+            }
+            .price-features li {
+                font-size: 0.85rem;
+            }
+
+            /* Metrics */
+            .metrics {
+                padding: 4rem 5vw;
+            }
+            .metrics-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem 1rem;
+            }
+            .metric-num {
+                font-size: 2.5rem;
+            }
+
+            /* Contact */
+            .contact-form-wrap {
+                padding: 4rem 5vw;
+            }
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                font-size: 16px; /* Critical for iOS */
+                padding: 0.875rem 0;
+            }
+            .form-submit {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Footer */
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+            .footer-desc {
+                max-width: 100%;
+            }
+            .footer-col h5 {
+                margin-bottom: 1rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            .footer-socials {
+                justify-content: center;
+            }
+
+            /* Modal */
+            .preview-header {
+                padding: 1rem;
+            }
+            .preview-footer {
+                padding: 0.75rem 1rem;
+            }
+
+            /* Loader */
+            .loader-text {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* ============================================================
+           SMALL MOBILE BREAKPOINT (max-width: 480px)
+           ============================================================ */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero-desc {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+            .section-head {
+                font-size: 1.6rem;
+            }
+            .work-card {
+                width: 80vw;
+                min-height: 260px !important;
+                min-width: 0;
+            }
+            .work-card-visual {
+                aspect-ratio: 3/4;
+            }
+            .work-card-title {
+                font-size: 1.3rem;
+            }
+            .price-card {
+                padding: 2rem 1.25rem;
+                min-width: 0;
+            }
+            .price-amount {
+                font-size: 2rem;
+            }
+            .metrics-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .metric-num {
+                font-size: 3rem;
+            }
+            .process-content h3 {
+                font-size: 1.3rem;
+            }
+            .testimonial-card::before {
+                font-size: 4rem;
+                top: 1rem;
+                right: 1.5rem;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .scroll-img:hover img,
+            .work-card:hover .work-card-visual img,
+            .philosophy-visual:hover img {
+                transform: none;
+                filter: saturate(0.35) brightness(0.65);
+            }
+            .work-card-overlay {
+                opacity: 1;
+            }
+            .scroll-img-label {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .testimonial-card:hover,
+            .price-card:hover,
+            .price-card.featured:hover {
+                transform: none;
+            }
+            .work-card:hover {
+                transform: none;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Custom Cursor -->
     <div class="cursor" id="cursor"></div>
     <div class="cursor-dot" id="cursorDot"></div>
-
-    <!-- Grain -->
     <div class="grain"></div>
 
-    <!-- Loader -->
     <div class="loader" id="loader">
         <div class="loader-text">Maiko</div>
         <div class="loader-line"></div>
     </div>
 
-    <!-- Preview Modal -->
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#work" onclick="closeMobileMenu()">Work</a>
+        <a href="#philosophy" onclick="closeMobileMenu()">Philosophy</a>
+        <a href="#process" onclick="closeMobileMenu()">Process</a>
+        <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
+        <a href="#contact" class="nav-cta" onclick="closeMobileMenu()">Start a Project</a>
+    </div>
+
     <div class="preview-modal" id="previewModal">
         <div class="preview-header">
             <h4>Live Preview</h4>
@@ -1342,41 +2215,184 @@
         </div>
     </div>
 
-    <!-- Navigation -->
     <nav class="nav" id="navbar">
         <a href="#" class="nav-logo">Maiko</a>
-        <ul class="nav-links">
-            <li><a href="#work">Work</a></li>
-            <li><a href="#philosophy">Philosophy</a></li>
-            <li><a href="#process">Process</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#contact" class="nav-cta">Start a Project</a></li>
-        </ul>
+        <div class="nav-center">
+            <ul class="nav-links">
+                <li><a href="#work">Work</a></li>
+                <li><a href="#philosophy">Philosophy</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+        </div>
+        <div class="nav-meta">
+            <span class="nav-location">Kisii, Kenya</span>
+            <a href="#contact" class="nav-cta">Start a Project</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </nav>
 
     <main>
-        <!-- Hero -->
+        <!-- ========== HERO ========== -->
         <section class="hero" id="home">
-            <div class="hero-bg">
-                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1920&q=80" alt="Salon atmosphere">
-            </div>
-            <div class="hero-vignette"></div>
-            <div class="hero-content">
-                <div class="hero-label">Award-Winning Digital Craft</div>
+            <div class="hero-left">
+                <div class="hero-eyebrow">
+                    <div class="hero-eyebrow-line"></div>
+                    <span class="hero-eyebrow-text">Digital Craft from Kisii</span>
+                </div>
                 <h1>
-                    Websites That
-                    <em>Command Attention.</em>
+                    <span class="line-1">We Build</span>
+                    <span class="line-2">Digital Monuments</span>
                 </h1>
                 <p class="hero-desc">
-                    We design digital experiences for salons and barbershops that don't just exist — they captivate, convert, and create loyal clients.
+                    Award-winning web design for salons and barbershops across East Africa. From concept to conversion — we craft experiences that turn browsers into loyal clients.
                 </p>
-                <a href="#work" class="hero-cta">
-                    Explore Our Work <i class="fas fa-arrow-right"></i>
-                </a>
+                <div class="hero-actions">
+                    <a href="#work" class="hero-cta-primary">
+                        View Our Work <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="hero-cta-secondary">Start a Conversation</a>
+                </div>
             </div>
-            <div class="hero-scroll">
-                <span>Scroll</span>
-                <div class="scroll-line"></div>
+
+            <!-- Dual Infinite Scroll Columns -->
+            <div class="hero-right">
+                <!-- Left Column — Scrolls UP -->
+                <div class="scroll-column up">
+                    <div class="scroll-track" id="scrollUp">
+                        <div class="scroll-img tall">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9VvczlRtggH32CMhlGvWd9s7Drkw1PsvIGA&s" alt="Nairobi salon">
+                            <span class="scroll-img-label">Nairobi, KE</span>
+                        </div>
+                        <div class="scroll-img">
+                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80" alt="Salon atmosphere">
+                            <span class="scroll-img-label">Westlands</span>
+                        </div>
+                        <div class="scroll-img wide">
+                            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80" alt="Hair styling">
+                            <span class="scroll-img-label">Kilimani</span>
+                        </div>
+                        <div class="scroll-img tall">
+                            <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80" alt="Barber craft">
+                            <span class="scroll-img-label">Kisii Town</span>
+                        </div>
+                        <div class="scroll-img">
+                            <img src="https://i.ebayimg.com/images/g/Y2kAAeSwoTBpvDV4/s-l1600.webp" alt="Salon tools">
+                            <span class="scroll-img-label">Nairobi CBD</span>
+                        </div>
+                        <div class="scroll-img wide">
+                            <img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=600&q=80" alt="Barbershop">
+                            <span class="scroll-img-label">Karen</span>
+                        </div>
+                        <!-- Duplicate for seamless loop -->
+                        <div class="scroll-img tall">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9VvczlRtggH32CMhlGvWd9s7Drkw1PsvIGA&s" alt="Nairobi salon">
+                            <span class="scroll-img-label">Nairobi, KE</span>
+                        </div>
+                        <div class="scroll-img">
+                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80" alt="Salon atmosphere">
+                            <span class="scroll-img-label">Westlands</span>
+                        </div>
+                        <div class="scroll-img wide">
+                            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80" alt="Hair styling">
+                            <span class="scroll-img-label">Kilimani</span>
+                        </div>
+                        <div class="scroll-img tall">
+                            <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80" alt="Barber craft">
+                            <span class="scroll-img-label">Kisii Town</span>
+                        </div>
+                        <div class="scroll-img">
+                            <img src="https://i.ebayimg.com/images/g/Y2kAAeSwoTBpvDV4/s-l1600.webp" alt="Salon tools">
+                            <span class="scroll-img-label">Nairobi CBD</span>
+                        </div>
+                        <div class="scroll-img wide">
+                            <img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=600&q=80" alt="Barbershop">
+                            <span class="scroll-img-label">Karen</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column — Scrolls DOWN -->
+                <div class="scroll-column down">
+                    <div class="scroll-track" id="scrollDown">
+                        <div class="scroll-img">
+                            <img src="https://images.fresha.com/locations/location-profile-images/472445/4400395/a38a55c3-0e04-4cbb-947e-1297afb76c05-SproutsKidsSalonBarbershop-Westlands-KE-NairobiCounty-Nairobi-Westlands-Fresha.jpg?class=venue-gallery-small" alt="Westlands salon">
+                            <span class="scroll-img-label">Westlands</span>
+                        </div>
+                        <div class="scroll-img tall">
+                            <img src="https://kimi-web-img.moonshot.cn/img/suimas.co.ke/f61a295fca5624687eab428cc4b4624d2d713f35.jpeg" alt="Kisii barbershop">
+                            <span class="scroll-img-label">Kisii Town</span>
+                        </div>
+                        <div class="scroll-img wide">
+                            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" alt="Barber chair">
+                            <span class="scroll-img-label">Lavington</span>
+                        </div>
+                        <div class="scroll-img">
+                            <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&q=80" alt="Salon interior">
+                            <span class="scroll-img-label">Ngong Road</span>
+                        </div>
+                        <div class="scroll-img tall">
+                            <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" alt="Haircut">
+                            <span class="scroll-img-label">Kisumu</span>
+                        </div>
+                        <div class="scroll-img wide">
+                            <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80" alt="Grooming">
+                            <span class="scroll-img-label">Runda</span>
+                        </div>
+                        <!-- Duplicate for seamless loop -->
+                        <div class="scroll-img">
+                            <img src="https://images.fresha.com/locations/location-profile-images/472445/4400395/a38a55c3-0e04-4cbb-947e-1297afb76c05-SproutsKidsSalonBarbershop-Westlands-KE-NairobiCounty-Nairobi-Westlands-Fresha.jpg?class=venue-gallery-small" alt="Westlands salon">
+                            <span class="scroll-img-label">Westlands</span>
+                        </div>
+                        <div class="scroll-img tall">
+                            <img src="https://kimi-web-img.moonshot.cn/img/suimas.co.ke/f61a295fca5624687eab428cc4b4624d2d713f35.jpeg" alt="Kisii barbershop">
+                            <span class="scroll-img-label">Kisii Town</span>
+                        </div>
+                        <div class="scroll-img wide">
+                            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" alt="Barber chair">
+                            <span class="scroll-img-label">Lavington</span>
+                        </div>
+                        <div class="scroll-img">
+                            <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&q=80" alt="Salon interior">
+                            <span class="scroll-img-label">Ngong Road</span>
+                        </div>
+                        <div class="scroll-img tall">
+                            <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" alt="Haircut">
+                            <span class="scroll-img-label">Kisumu</span>
+                        </div>
+                        <div class="scroll-img wide">
+                            <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80" alt="Grooming">
+                            <span class="scroll-img-label">Runda</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-bottom-bar">
+                <div class="hero-bottom-left">
+                    <div class="hero-stat">
+                        <span class="hero-stat-num">50+</span>
+                        <span class="hero-stat-label">Projects Delivered</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-num">3X</span>
+                        <span class="hero-stat-label">Avg. Revenue Growth</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-num">7</span>
+                        <span class="hero-stat-label">Day Turnaround</span>
+                    </div>
+                </div>
+                <div class="hero-bottom-right">
+                    <div class="hero-scroll-hint">
+                        <span>Scroll to Explore</span>
+                        <div class="hero-scroll-line"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1430,9 +2446,9 @@
             </div>
         </section>
 
-        <!-- Work -->
+        <!-- ========== WORK (Horizontal Scroll Gallery) ========== -->
         <section class="work" id="work">
-            <div class="section-pinned">
+            <div class="work-header">
                 <div class="section-label reveal">Selected Work</div>
                 <h2 class="section-head reveal">
                     Crafted With <em>Obsession.</em>
@@ -1440,72 +2456,114 @@
                 <p class="section-sub reveal">
                     Four projects. Four transformations. Each one a testament to what happens when passion meets precision.
                 </p>
-                <div class="work-grid">
-                    <!-- The Cut Above -->
-                    <div class="work-item reveal-scale" onclick="openPreview('https://thecutabove-maikodigital.netlify.app/')">
-                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1200&q=80" alt="The Cut Above">
-                        <div class="work-overlay">
-                            <span class="work-type">Barbershop</span>
-                            <h3 class="work-title">The Cut Above</h3>
-                            <span class="work-result">+210% Bookings</span>
-                            <div class="work-actions">
-                                <span class="work-btn"><i class="fas fa-eye"></i> Live Preview</span>
-                            </div>
-                        </div>
-                    </div>
+            </div>
 
-                    <!-- Rise and Grind -->
-                    <div class="work-item reveal-scale d1" onclick="openPreview('https://riseandgrind-maikodigital.netlify.app/')">
-                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80" alt="Rise and Grind">
-                        <div class="work-overlay">
-                            <span class="work-type">Fitness</span>
-                            <h3 class="work-title">Rise and Grind</h3>
-                            <span class="work-result">+180% Leads</span>
-                            <div class="work-actions">
-                                <span class="work-btn"><i class="fas fa-eye"></i> Live Preview</span>
+            <div class="work-gallery-wrapper">
+                <div class="work-gallery" id="workGallery">
+                    <!-- Project 01 -->
+                    <article class="work-card reveal" onclick="openPreview('https://thecutabove-maikodigital.netlify.app/')">
+                        <div class="work-card-visual">
+                            <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1200&q=80" alt="The Cut Above">
+                            <div class="work-card-overlay"></div>
+                            <span class="work-card-num">01</span>
+                        </div>
+                        <div class="work-card-info">
+                            <div class="work-card-meta">
+                                <span class="work-card-type">Barbershop</span>
+                                <span class="work-card-location">Kisii Town</span>
+                            </div>
+                            <h3 class="work-card-title">The Cut Above</h3>
+                            <div class="work-card-bottom">
+                                <span class="work-card-result">+210% Bookings</span>
+                                <span class="work-card-cta">
+                                    <i class="fas fa-arrow-right"></i> Live Preview
+                                </span>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Atelier -->
-                    <div class="work-item reveal-scale d2" onclick="openPreview('https://atelier-maikodigital.netlify.app/')">
-                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80" alt="Atelier">
-                        <div class="work-overlay">
-                            <span class="work-type">Editorial Studio</span>
-                            <h3 class="work-title">Atelier</h3>
-                            <span class="work-result">+340% Inquiries</span>
-                            <div class="work-actions">
-                                <span class="work-btn"><i class="fas fa-eye"></i> Live Preview</span>
+                    <!-- Project 02 -->
+                    <article class="work-card reveal d1" onclick="openPreview('https://riseandgrind-maikodigital.netlify.app/')">
+                        <div class="work-card-visual">
+                            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80" alt="Rise and Grind">
+                            <div class="work-card-overlay"></div>
+                            <span class="work-card-num">02</span>
+                        </div>
+                        <div class="work-card-info">
+                            <div class="work-card-meta">
+                                <span class="work-card-type">Fitness</span>
+                                <span class="work-card-location">Nairobi</span>
+                            </div>
+                            <h3 class="work-card-title">Rise and Grind</h3>
+                            <div class="work-card-bottom">
+                                <span class="work-card-result">+180% Leads</span>
+                                <span class="work-card-cta">
+                                    <i class="fas fa-arrow-right"></i> Live Preview
+                                </span>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Elite Cuts -->
-                    <div class="work-item reveal-scale" onclick="openPreview('https://elitecuts-maikodigital.netlify.app/')">
-                        <img src="https://images.unsplash.com/photo-1593702295094-aea8c50f0d01?w=800&q=80" alt="Elite Cuts">
-                        <div class="work-overlay">
-                            <span class="work-type">Luxury Grooming</span>
-                            <h3 class="work-title">Elite Cuts</h3>
-                            <span class="work-result">+150% Avg. Ticket</span>
-                            <div class="work-actions">
-                                <span class="work-btn"><i class="fas fa-eye"></i> Live Preview</span>
+                    <!-- Project 03 -->
+                    <article class="work-card reveal d2" onclick="openPreview('https://atelier-maikodigital.netlify.app/')">
+                        <div class="work-card-visual">
+                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80" alt="Atelier">
+                            <div class="work-card-overlay"></div>
+                            <span class="work-card-num">03</span>
+                        </div>
+                        <div class="work-card-info">
+                            <div class="work-card-meta">
+                                <span class="work-card-type">Editorial Studio</span>
+                                <span class="work-card-location">Westlands</span>
+                            </div>
+                            <h3 class="work-card-title">Atelier</h3>
+                            <div class="work-card-bottom">
+                                <span class="work-card-result">+340% Inquiries</span>
+                                <span class="work-card-cta">
+                                    <i class="fas fa-arrow-right"></i> Live Preview
+                                </span>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Elite Cuts (Second) -->
-                    <div class="work-item reveal-scale d1" onclick="openPreview('https://elitecuts-maikodigital.netlify.app/')">
-                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=80" alt="Elite Cuts">
-                        <div class="work-overlay">
-                            <span class="work-type">Luxury Grooming</span>
-                            <h3 class="work-title">Elite Cuts</h3>
-                            <span class="work-result">+275% Walk-ins</span>
-                            <div class="work-actions">
-                                <span class="work-btn"><i class="fas fa-eye"></i> Live Preview</span>
+                    <!-- Project 04 -->
+                    <article class="work-card reveal d3" onclick="openPreview('https://elitecuts-maikodigital.netlify.app/')">
+                        <div class="work-card-visual">
+                            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=80" alt="Elite Cuts">
+                            <div class="work-card-overlay"></div>
+                            <span class="work-card-num">04</span>
+                        </div>
+                        <div class="work-card-info">
+                            <div class="work-card-meta">
+                                <span class="work-card-type">Luxury Grooming</span>
+                                <span class="work-card-location">Kisii CBD</span>
+                            </div>
+                            <h3 class="work-card-title">Elite Cuts</h3>
+                            <div class="work-card-bottom">
+                                <span class="work-card-result">+275% Walk-ins</span>
+                                <span class="work-card-cta">
+                                    <i class="fas fa-arrow-right"></i> Live Preview
+                                </span>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="work-progress">
+                <div class="work-progress-track">
+                    <div class="work-progress-fill" id="workProgressFill"></div>
+                </div>
+                <div class="work-progress-text">
+                    <span id="workCurrent">01</span> / 04
+                </div>
+            </div>
+
+            <!-- Scroll Hint -->
+            <div class="work-scroll-hint reveal">
+                <div class="work-scroll-line"></div>
+                <span>Drag or scroll to explore</span>
             </div>
         </section>
 
@@ -1603,7 +2661,7 @@
                             <div class="testimonial-avatar">JK</div>
                             <div>
                                 <div class="testimonial-name">James Kariuki</div>
-                                <div class="testimonial-role">Owner, The Cut Above</div>
+                                <div class="testimonial-role">Owner, The Cut Above — Kisii Town</div>
                             </div>
                         </div>
                     </div>
@@ -1613,7 +2671,7 @@
                             <div class="testimonial-avatar">AM</div>
                             <div>
                                 <div class="testimonial-name">Amina Mohammed</div>
-                                <div class="testimonial-role">Founder, Glow Beauty</div>
+                                <div class="testimonial-role">Founder, Glow Beauty — Nairobi</div>
                             </div>
                         </div>
                     </div>
@@ -1623,7 +2681,7 @@
                             <div class="testimonial-avatar">DO</div>
                             <div>
                                 <div class="testimonial-name">David Ochieng</div>
-                                <div class="testimonial-role">Manager, Elite Cuts</div>
+                                <div class="testimonial-role">Manager, Elite Cuts — Kisii CBD</div>
                             </div>
                         </div>
                     </div>
@@ -1639,51 +2697,98 @@
                     Transparent <em>Value.</em>
                 </h2>
                 <p class="section-sub reveal">
-                    No hidden costs. No recurring fees from us. Just honest pricing for work that transforms your business.
+                    No hidden costs. No recurring fees from us. Just honest pricing for work that transforms your salon or barbershop.
                 </p>
                 <div class="pricing-grid">
+                    <!-- ESSENTIAL -->
                     <div class="price-card reveal">
                         <div class="price-name">Essential</div>
-                        <div class="price-desc">For salons taking their first digital step with intention.</div>
+                        <div class="price-subtitle">Entry Conversion Offer</div>
+                        <div class="price-desc">For salons and barbershops taking their first digital step with intention.</div>
                         <div class="price-amount">KES 39,000</div>
-                        <div class="price-period">One-time investment</div>
+                        <div class="price-period">(one-time)</div>
+                        <p class="price-goal">👉 Goal: "Get online and start receiving clients fast"</p>
                         <ul class="price-features">
-                            <li><i class="fas fa-check"></i> 3-Page Custom Design</li>
-                            <li><i class="fas fa-check"></i> Mobile-First Responsive</li>
-                            <li><i class="fas fa-check"></i> Contact Integration</li>
-                            <li><i class="fas fa-check"></i> Basic SEO Setup</li>
-                            <li><i class="fas fa-check"></i> 3-Day Delivery</li>
+                            <li><i class="fas fa-check"></i> <strong>Core Build</strong></li>
+                            <li><i class="fas fa-check"></i> 3-Page High-Converting Website (Home, Services, Contact)</li>
+                            <li><i class="fas fa-check"></i> Mobile-First Responsive Design</li>
+                            <li><i class="fas fa-check"></i> Conversion-Optimized Layout (built to get bookings, not just look good)</li>
+                            <li><i class="fas fa-check"></i> <strong>Client Acquisition Basics</strong></li>
+                            <li><i class="fas fa-check"></i> WhatsApp Click-to-Chat Integration</li>
+                            <li><i class="fas fa-check"></i> Call / Contact Buttons everywhere</li>
+                            <li><i class="fas fa-check"></i> Google Maps Embed (location trust boost)</li>
+                            <li><i class="fas fa-check"></i> <strong>Visibility Setup</strong></li>
+                            <li><i class="fas fa-check"></i> Basic SEO Setup (titles, meta, structure, indexing)</li>
+                            <li><i class="fas fa-check"></i> Google Search Submission setup</li>
+                            <li><i class="fas fa-check"></i> <strong>Authority Boost</strong></li>
+                            <li><i class="fas fa-check"></i> Social Media Integration (Instagram, TikTok, Facebook links)</li>
+                            <li><i class="fas fa-check"></i> <strong>Delivery</strong></li>
+                            <li><i class="fas fa-check"></i> 3-Day Fast Delivery</li>
+                            <li><i class="fas fa-check"></i> Basic walkthrough video</li>
                         </ul>
                         <button class="price-btn" onclick="location.href='#contact'">Begin Journey</button>
                     </div>
+
+                    <!-- GROWTH -->
                     <div class="price-card featured reveal d1">
                         <div class="price-badge">Most Chosen</div>
                         <div class="price-name">Growth</div>
-                        <div class="price-desc">For salons ready to dominate their market and scale bookings.</div>
+                        <div class="price-subtitle">Money Maker Plan</div>
+                        <div class="price-desc">For salons ready to actively increase bookings and dominate locally.</div>
                         <div class="price-amount">KES 78,000</div>
-                        <div class="price-period">One-time investment</div>
+                        <div class="price-period">(one-time)</div>
+                        <p class="price-goal">👉 Goal: "Turn traffic into daily bookings"</p>
                         <ul class="price-features">
-                            <li><i class="fas fa-check"></i> 5-Page Custom Design</li>
-                            <li><i class="fas fa-check"></i> Integrated Booking System</li>
-                            <li><i class="fas fa-check"></i> WhatsApp Automation</li>
-                            <li><i class="fas fa-check"></i> Google Business Optimization</li>
-                            <li><i class="fas fa-check"></i> Advanced SEO & Analytics</li>
-                            <li><i class="fas fa-check"></i> 30 Days Priority Support</li>
+                            <li><i class="fas fa-check"></i> <strong>Everything in Essential, plus:</strong></li>
+                            <li><i class="fas fa-check"></i> <strong>Booking System (Core Upgrade)</strong></li>
+                            <li><i class="fas fa-check"></i> Integrated Online Booking System</li>
+                            <li><i class="fas fa-check"></i> Service selection + time slots</li>
+                            <li><i class="fas fa-check"></i> Automated booking confirmation (WhatsApp/email)</li>
+                            <li><i class="fas fa-check"></i> <strong>Marketing Engine</strong></li>
+                            <li><i class="fas fa-check"></i> WhatsApp Automation (auto replies + booking prompts)</li>
+                            <li><i class="fas fa-check"></i> Service Menu + Dynamic Pricing Page</li>
+                            <li><i class="fas fa-check"></i> Lead-focused landing structure (built for conversions)</li>
+                            <li><i class="fas fa-check"></i> <strong>Visibility & Ranking</strong></li>
+                            <li><i class="fas fa-check"></i> Google Business Profile Optimization</li>
+                            <li><i class="fas fa-check"></i> Advanced Local SEO (rank in "near me" searches)</li>
+                            <li><i class="fas fa-check"></i> <strong>Analytics</strong></li>
+                            <li><i class="fas fa-check"></i> Visitor tracking setup (basic analytics dashboard)</li>
+                            <li><i class="fas fa-check"></i> Conversion tracking (calls, WhatsApp clicks)</li>
+                            <li><i class="fas fa-check"></i> <strong>Support</strong></li>
+                            <li><i class="fas fa-check"></i> 30 Days Priority Support (fast fixes + guidance)</li>
                         </ul>
                         <button class="price-btn price-btn-primary" onclick="location.href='#contact'">Start Growing</button>
                     </div>
+
+                    <!-- SOVEREIGN -->
                     <div class="price-card reveal d2">
                         <div class="price-name">Sovereign</div>
-                        <div class="price-desc">For established brands seeking a complete digital transformation.</div>
+                        <div class="price-subtitle">Market Domination System</div>
+                        <div class="price-desc">For established salons/barbershops scaling into premium brands.</div>
                         <div class="price-amount">KES 156,000</div>
-                        <div class="price-period">One-time investment</div>
+                        <div class="price-period">(one-time)</div>
+                        <p class="price-goal">👉 Goal: "Become the go-to salon in your area"</p>
                         <ul class="price-features">
-                            <li><i class="fas fa-check"></i> Unlimited Pages</li>
-                            <li><i class="fas fa-check"></i> Custom Booking Portal</li>
-                            <li><i class="fas fa-check"></i> E-Commerce Integration</li>
-                            <li><i class="fas fa-check"></i> Full SEO & Content Strategy</li>
-                            <li><i class="fas fa-check"></i> Complete Brand Identity</li>
-                            <li><i class="fas fa-check"></i> 60 Days White-Glove Support</li>
+                            <li><i class="fas fa-check"></i> <strong>Full Digital Ecosystem</strong></li>
+                            <li><i class="fas fa-check"></i> Custom Multi-Page Website (unlimited scalable structure)</li>
+                            <li><i class="fas fa-check"></i> High-end UI/UX conversion system (premium feel)</li>
+                            <li><i class="fas fa-check"></i> <strong>Booking Infrastructure</strong></li>
+                            <li><i class="fas fa-check"></i> Custom Booking Portal (advanced scheduling system)</li>
+                            <li><i class="fas fa-check"></i> Staff-based booking (choose barber/stylist)</li>
+                            <li><i class="fas fa-check"></i> Availability management system</li>
+                            <li><i class="fas fa-check"></i> <strong>Brand Power System</strong></li>
+                            <li><i class="fas fa-check"></i> Complete Brand Identity (logo, typography, colors, brand direction)</li>
+                            <li><i class="fas fa-check"></i> Premium visual direction system</li>
+                            <li><i class="fas fa-check"></i> <strong>Authority & Trust Engine</strong></li>
+                            <li><i class="fas fa-check"></i> Staff Profiles + Portfolio Gallery system</li>
+                            <li><i class="fas fa-check"></i> Review & Testimonial automation system (Google + website)</li>
+                            <li><i class="fas fa-check"></i> <strong>Growth Engine</strong></li>
+                            <li><i class="fas fa-check"></i> Full SEO Strategy (keyword targeting + ranking plan)</li>
+                            <li><i class="fas fa-check"></i> Content Strategy Blueprint (what to post, what to rank for)</li>
+                            <li><i class="fas fa-check"></i> Local dominance optimization (maps + search visibility)</li>
+                            <li><i class="fas fa-check"></i> <strong>Support</strong></li>
+                            <li><i class="fas fa-check"></i> 60 Days White-Glove Support (setup help + issue resolution)</li>
+                            <li><i class="fas fa-check"></i> Priority fixes + guided optimization</li>
                         </ul>
                         <button class="price-btn" onclick="location.href='#contact'">Claim Your Throne</button>
                     </div>
@@ -1702,7 +2807,7 @@
                     Let's Create Something <em>Unforgettable.</em>
                 </h2>
                 <p class="section-sub reveal" style="margin-bottom: 3rem;">
-                    Tell us about your salon. Your dreams. Your challenges. We'll respond within 2 hours.
+                    Tell us about your salon. Your dreams. Your challenges. We'll respond within 2 hours — even on Sundays.
                 </p>
                 <form id="contactForm" action="https://formspree.io/f/mojybqdv" method="POST">
                     <div class="form-group reveal">
@@ -1748,7 +2853,7 @@
         <div class="footer-grid">
             <div>
                 <a href="#" class="footer-brand">Maiko</a>
-                <p class="footer-desc">Award-winning digital craft for salons and barbershops. Based in Kisii, Kenya. Serving visionaries worldwide.</p>
+                <p class="footer-desc">Award-winning digital craft for salons and barbershops. Born in Kisii, Kenya. Serving visionaries across East Africa and beyond.</p>
             </div>
             <div class="footer-col">
                 <h5>Navigate</h5>
@@ -1778,7 +2883,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 Maiko Digital. Crafted with obsession in Kisii, Kenya.</p>
+            <p>© 2026 Maiko Digital. Crafted with obsession in Kisii, Kenya. 00°41'S 34°46'E.</p>
             <div class="footer-socials">
                 <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
@@ -1799,34 +2904,54 @@
         let mouseX = 0, mouseY = 0;
         let cursorX = 0, cursorY = 0;
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursorDot.style.left = mouseX + 'px';
-            cursorDot.style.top = mouseY + 'px';
-        });
+        if (window.matchMedia('(pointer: fine)').matches) {
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                cursorDot.style.left = mouseX + 'px';
+                cursorDot.style.top = mouseY + 'px';
+            });
 
-        function animateCursor() {
-            cursorX += (mouseX - cursorX) * 0.15;
-            cursorY += (mouseY - cursorY) * 0.15;
-            cursor.style.left = cursorX + 'px';
-            cursor.style.top = cursorY + 'px';
-            requestAnimationFrame(animateCursor);
+            function animateCursor() {
+                cursorX += (mouseX - cursorX) * 0.15;
+                cursorY += (mouseY - cursorY) * 0.15;
+                cursor.style.left = cursorX + 'px';
+                cursor.style.top = cursorY + 'px';
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+
+            document.querySelectorAll('a, button, .work-card').forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
         }
-        animateCursor();
 
-        document.querySelectorAll('a, button, .work-item').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
+        // Mobile Menu
+        const navToggle = document.getElementById('navToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
 
-        // Nav scroll
+        function toggleMobileMenu() {
+            navToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeMobileMenu() {
+            navToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        navToggle.addEventListener('click', toggleMobileMenu);
+
+        // Nav scroll effect
         const nav = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 100);
         });
 
-        // Scroll reveals
+        // Intersection Observer for reveals
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1897,26 +3022,17 @@
             document.body.style.overflow = '';
         }
 
-        // Close on Escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closePreview();
-        });
-
-        // Hero parallax
-        gsap.registerPlugin(ScrollTrigger);
-        gsap.to('.hero-bg img', {
-            yPercent: 30,
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '.hero',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: true
+            if (e.key === 'Escape') {
+                closePreview();
+                closeMobileMenu();
             }
         });
 
-        gsap.to('.hero-content', {
-            yPercent: -20,
+        // GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.to('.hero-left', {
+            yPercent: -10,
             opacity: 0,
             ease: 'none',
             scrollTrigger: {
@@ -1927,7 +3043,62 @@
             }
         });
 
-        // Form
+        // Horizontal drag scrolling for work gallery
+        const gallery = document.getElementById('workGallery');
+        const galleryWrapper = document.querySelector('.work-gallery-wrapper');
+        const progressFill = document.getElementById('workProgressFill');
+        const currentNum = document.getElementById('workCurrent');
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        galleryWrapper.addEventListener('mousedown', (e) => {
+            isDown = true;
+            galleryWrapper.style.cursor = 'grabbing';
+            startX = e.pageX - galleryWrapper.offsetLeft;
+            scrollLeft = galleryWrapper.scrollLeft;
+        });
+
+        galleryWrapper.addEventListener('mouseleave', () => {
+            isDown = false;
+            galleryWrapper.style.cursor = 'grab';
+        });
+
+        galleryWrapper.addEventListener('mouseup', () => {
+            isDown = false;
+            galleryWrapper.style.cursor = 'grab';
+        });
+
+        galleryWrapper.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - galleryWrapper.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            galleryWrapper.scrollLeft = scrollLeft - walk;
+        });
+
+        function updateWorkProgress() {
+            const maxScroll = galleryWrapper.scrollWidth - galleryWrapper.clientWidth;
+            const scrolled = galleryWrapper.scrollLeft;
+            const progress = maxScroll > 0 ? Math.max(0, Math.min(1, scrolled / maxScroll)) : 0;
+
+            progressFill.style.transform = `scaleX(${progress})`;
+
+            const cards = gallery.querySelectorAll('.work-card');
+            const totalCards = cards.length;
+            if (totalCards === 0) return;
+
+            // FIX: Use scroll progress to determine active card (works on all screen sizes)
+            const currentIndex = Math.round(progress * (totalCards - 1)) + 1;
+            currentNum.textContent = String(currentIndex).padStart(2, '0');
+        }
+
+        galleryWrapper.addEventListener('scroll', updateWorkProgress);
+        // Initialize on load in case gallery is already scrolled
+        window.addEventListener('load', updateWorkProgress);
+
+        // Form handling
         const form = document.getElementById('contactForm');
         const submitBtn = document.getElementById('formSubmit');
         if (form) {
