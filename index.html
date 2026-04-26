@@ -1358,7 +1358,12 @@
             gap: 1rem;
             margin-bottom: 2.5rem;
         }
-        .pricing-upsells-header h3 {
+        .upsells-header-text {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .upsells-header-text h3 {
             font-family: var(--font-heading);
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -1366,6 +1371,19 @@
             color: var(--ink-dim);
             font-weight: 500;
             white-space: nowrap;
+        }
+        .upsells-subtitle {
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--ink-dim);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .upsells-header-text .upsells-subtitle::before {
+            content: '\2014';
+            margin-right: 0.5rem;
         }
         .upsells-line {
             width: 40px;
@@ -2002,7 +2020,7 @@
         }
 
         /* ============================================================
-           MOBILE BREAKPOINT (max-width: 768px)
+        MOBILE BREAKPOINT (max-width: 768px)
            ============================================================ */
         @media (max-width: 768px) {
             body {
@@ -2212,6 +2230,41 @@
             .pricing-upsells {
                 margin-top: 3rem;
             }
+
+            /* Mobile Upsells Header Restack */
+            .pricing-upsells-header {
+                position: relative;
+                justify-content: center;
+                gap: 0;
+                padding: 0 2.5rem;
+                margin-bottom: 2.5rem;
+            }
+            .upsells-header-text {
+                flex-direction: column;
+                gap: 0.25rem;
+                text-align: center;
+            }
+            .upsells-header-text h3,
+            .upsells-header-text .upsells-subtitle {
+                white-space: normal;
+                font-size: 0.7rem;
+                line-height: 1.4;
+            }
+            .upsells-header-text .upsells-subtitle::before {
+                display: none;
+            }
+            .pricing-upsells-header .upsells-line {
+                position: absolute;
+                left: 0;
+                top: 50%;
+                margin-top: -1px;
+                width: 30px;
+            }
+            .pricing-upsells-header .upsells-line.right {
+                left: auto;
+                right: 0;
+            }
+
             .upsells-grid {
                 grid-template-columns: 1fr;
                 max-width: 400px;
@@ -2973,7 +3026,10 @@
                 <div class="pricing-upsells">
                     <div class="pricing-upsells-header">
                         <div class="upsells-line"></div>
-                        <h3>Monthly Upsells &mdash; Recurring Revenue</h3>
+                        <div class="upsells-header-text">
+                            <h3>Monthly Upsells</h3>
+                            <span class="upsells-subtitle">Recurring Revenue</span>
+                        </div>
                         <div class="upsells-line right"></div>
                     </div>
                     <div class="upsells-grid">
