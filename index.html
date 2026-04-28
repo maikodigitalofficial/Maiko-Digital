@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="description" content="Maiko Digital — Award-winning web design for salons and barbershops. Crafted in Kisii, Kenya.">
-    <title>Maiko Digital | Kisii, Kenya — Salon Web Design</title>
+    <meta name="description" content="Maiko Digital — Web design that turns salon visitors into paying clients. Crafted in Kisii, Kenya.">
+    <title>Maiko Digital | Salon Websites That Book Clients — Kisii, Kenya</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,7 +51,6 @@
             overflow-x: hidden;
             line-height: 1.6;
             font-size: 16px;
-            cursor: none;
             -webkit-tap-highlight-color: transparent;
             word-break: break-word;
             overflow-wrap: break-word;
@@ -64,36 +63,6 @@
         }
 
         ::selection { background: var(--accent); color: var(--bg); }
-
-        /* Custom Cursor */
-        .cursor {
-            position: fixed;
-            width: 12px;
-            height: 12px;
-            background: var(--accent);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 99999;
-            mix-blend-mode: difference;
-            transition: transform 0.15s var(--ease-expo), width 0.3s, height 0.3s;
-            transform: translate(-50%, -50%);
-        }
-        .cursor.hover {
-            width: 48px;
-            height: 48px;
-            background: transparent;
-            border: 1px solid var(--accent);
-        }
-        .cursor-dot {
-            position: fixed;
-            width: 4px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 99999;
-            transform: translate(-50%, -50%);
-        }
 
         /* Grain Overlay */
         .grain {
@@ -123,7 +92,7 @@
             grid-template-columns: auto 1fr auto;
             align-items: center;
             gap: 3rem;
-            transition: all 0.8s var(--ease-expo);
+            transition: all 0.5s var(--ease-expo);
             border-bottom: 1px solid transparent;
         }
         .nav.scrolled {
@@ -175,7 +144,7 @@
             letter-spacing: 0.15em;
             color: var(--ink-muted);
             text-decoration: none;
-            transition: color 0.4s;
+            transition: color 0.3s;
             position: relative;
             font-weight: 500;
         }
@@ -187,7 +156,7 @@
             width: 0;
             height: 1px;
             background: var(--accent);
-            transition: all 0.4s var(--ease-expo);
+            transition: all 0.3s var(--ease-expo);
             transform: translateX(-50%);
         }
         .nav-links a:hover {
@@ -229,7 +198,7 @@
             letter-spacing: 0.15em;
             color: var(--bg);
             text-decoration: none;
-            transition: all 0.5s var(--ease-expo);
+            transition: all 0.4s var(--ease-expo);
             overflow: hidden;
             font-weight: 600;
             white-space: nowrap;
@@ -255,7 +224,7 @@
             width: 24px;
             height: 2px;
             background: var(--ink);
-            transition: all 0.4s var(--ease-expo);
+            transition: all 0.3s var(--ease-expo);
             border-radius: 2px;
         }
         .nav-toggle.active span:nth-child(1) {
@@ -283,7 +252,7 @@
             gap: 2rem;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.5s var(--ease-expo);
+            transition: opacity 0.4s var(--ease-expo);
         }
         .mobile-menu.active {
             opacity: 1;
@@ -386,7 +355,7 @@
             height: 100%;
             object-fit: cover;
             filter: saturate(0.25) contrast(1.15) brightness(0.65);
-            transition: all 0.8s var(--ease-smooth);
+            transition: all 0.6s var(--ease-smooth);
             transform: scale(1.02);
         }
         .scroll-img:hover img {
@@ -417,7 +386,7 @@
             border-radius: 4px;
             opacity: 0;
             transform: translateY(8px);
-            transition: all 0.4s var(--ease-expo);
+            transition: all 0.3s var(--ease-expo);
         }
         .scroll-img:hover .scroll-img-label {
             opacity: 1;
@@ -446,7 +415,7 @@
         }
         .hero h1 {
             font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5.5vw, 6rem);
+            font-size: clamp(2.5rem, 5.5vw, 5.5rem);
             font-weight: 400;
             line-height: 1.05;
             letter-spacing: -0.03em;
@@ -479,10 +448,21 @@
             color: var(--ink-muted);
             max-width: 480px;
             line-height: 1.8;
-            margin-bottom: 3rem;
+            margin-bottom: 1.5rem;
             font-weight: 300;
             padding-left: 2rem;
             border-left: 1px solid var(--ink-dim);
+        }
+        .hero-rejection {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            color: var(--terracotta);
+            max-width: 480px;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            font-weight: 400;
+            padding-left: 2rem;
+            font-style: italic;
         }
         .hero-actions {
             display: flex;
@@ -505,7 +485,7 @@
             font-weight: 600;
             text-decoration: none;
             border-radius: 100px;
-            transition: all 0.5s var(--ease-expo);
+            transition: all 0.4s var(--ease-expo);
             white-space: nowrap;
         }
         .hero-cta-primary:hover {
@@ -513,7 +493,7 @@
             box-shadow: 0 15px 40px rgba(201,169,110,0.25);
         }
         .hero-cta-primary i {
-            transition: transform 0.4s var(--ease-expo);
+            transition: transform 0.3s var(--ease-expo);
         }
         .hero-cta-primary:hover i {
             transform: translateX(4px);
@@ -527,7 +507,7 @@
             text-decoration: none;
             position: relative;
             padding-bottom: 0.3rem;
-            transition: color 0.4s;
+            transition: color 0.3s;
             white-space: nowrap;
         }
         .hero-cta-secondary::after {
@@ -540,7 +520,7 @@
             background: var(--accent);
             transform: scaleX(0);
             transform-origin: right;
-            transition: transform 0.6s var(--ease-expo);
+            transition: transform 0.4s var(--ease-expo);
         }
         .hero-cta-secondary:hover {
             color: var(--accent);
@@ -638,7 +618,7 @@
             -webkit-text-stroke: 1px var(--ink-dim);
             padding: 0 3rem;
             white-space: nowrap;
-            transition: color 0.4s;
+            transition: color 0.3s;
         }
         .marquee-item:hover {
             color: var(--accent);
@@ -690,6 +670,349 @@
             font-weight: 300;
         }
 
+        /* ========== PROBLEM SECTION ========== */
+        .problem {
+            background: var(--bg-elevated);
+        }
+        .problem-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .problem-statement {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 3.5rem);
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--ink);
+            margin-bottom: 2rem;
+        }
+        .problem-statement em {
+            color: var(--terracotta);
+            font-style: italic;
+        }
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            text-align: left;
+        }
+        .problem-item {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            transition: all 0.4s var(--ease-expo);
+        }
+        .problem-item:hover {
+            border-color: rgba(196,112,90,0.2);
+            transform: translateY(-4px);
+        }
+        .problem-item-num {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--terracotta);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+        .problem-item h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--ink);
+        }
+        .problem-item p {
+            font-size: 0.95rem;
+            color: var(--ink-muted);
+            line-height: 1.7;
+        }
+
+        /* ========== WORK (Grid Layout - Images & Text Separate) ========== */
+        .work {
+            background: var(--bg);
+            padding: 10rem 4vw;
+        }
+
+        .work-header {
+            max-width: 1400px;
+            margin: 0 auto 6rem;
+        }
+
+        .work-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 8rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .work-project {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .work-project:nth-child(even) {
+            direction: rtl;
+        }
+
+        .work-project:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .work-project-visual {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+        .work-project-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.35) brightness(0.7);
+            transition: all 0.8s var(--ease-smooth);
+            transform: scale(1.02);
+        }
+
+        .work-project-visual:hover img {
+            filter: saturate(0.7) brightness(0.85);
+            transform: scale(1.06);
+        }
+
+        .work-project-visual::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(10,10,15,0.2) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .work-project-num {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--accent);
+            opacity: 0.8;
+            letter-spacing: 0.1em;
+            z-index: 2;
+            background: rgba(10,10,15,0.6);
+            backdrop-filter: blur(8px);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+        }
+
+        .work-project-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .work-project-meta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .work-project-type {
+            font-family: var(--font-heading);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .work-project-location {
+            font-family: var(--font-heading);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--ink-dim);
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .work-project-location::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--ink-dim);
+            border-radius: 50%;
+        }
+
+        .work-project-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 3vw, 3rem);
+            font-weight: 400;
+            color: var(--ink);
+            line-height: 1.1;
+        }
+
+        .work-project-before {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            color: var(--terracotta);
+            line-height: 1.6;
+            padding-left: 1rem;
+            border-left: 2px solid var(--terracotta);
+        }
+
+        .work-project-after {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 600;
+            line-height: 1.6;
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent);
+        }
+
+        .work-project-result {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            color: var(--ink-muted);
+            font-weight: 500;
+        }
+
+        .work-project-result::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .work-project-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: gap 0.3s var(--ease-expo);
+            width: fit-content;
+        }
+
+        .work-project-cta:hover {
+            gap: 1rem;
+        }
+
+        /* ========== BELONGING SECTION ========== */
+        .belonging {
+            background: var(--bg);
+            position: relative;
+            overflow: hidden;
+        }
+        .belonging::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--accent), transparent);
+            opacity: 0.3;
+        }
+        .belonging-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 5rem;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .belonging-col {
+            padding: 3rem;
+            border-radius: 8px;
+        }
+        .belonging-col.for {
+            background: rgba(201,169,110,0.05);
+            border: 1px solid rgba(201,169,110,0.1);
+        }
+        .belonging-col.not-for {
+            background: rgba(196,112,90,0.05);
+            border: 1px solid rgba(196,112,90,0.1);
+        }
+        .belonging-col h4 {
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .belonging-col.for h4 {
+            color: var(--accent);
+        }
+        .belonging-col.not-for h4 {
+            color: var(--terracotta);
+        }
+        .belonging-col h4::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .belonging-col.for h4::before {
+            background: var(--accent);
+        }
+        .belonging-col.not-for h4::before {
+            background: var(--terracotta);
+        }
+        .belonging-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .belonging-col li {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--ink-muted);
+            line-height: 1.6;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .belonging-col li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+        .belonging-col.for li::before {
+            background: var(--accent);
+        }
+        .belonging-col.not-for li::before {
+            background: var(--terracotta);
+        }
+
         /* ========== PHILOSOPHY ========== */
         .philosophy { background: var(--bg-elevated); }
         .philosophy-grid {
@@ -710,7 +1033,7 @@
             height: 100%;
             object-fit: cover;
             filter: saturate(0.5) contrast(1.1);
-            transition: all 1s var(--ease-smooth);
+            transition: all 0.8s var(--ease-smooth);
         }
         .philosophy-visual:hover img {
             filter: saturate(0.9) contrast(1);
@@ -741,7 +1064,7 @@
         .phil-item {
             border-left: 1px solid var(--ink-dim);
             padding-left: 2rem;
-            transition: border-color 0.4s;
+            transition: border-color 0.3s;
         }
         .phil-item:hover {
             border-color: var(--accent);
@@ -759,261 +1082,48 @@
             line-height: 1.8;
         }
 
-        /* ========== WORK (Horizontal Scroll Gallery) ========== */
-        .work {
-            background: var(--bg);
-            padding: 10rem 0;
+        /* ========== BOLD STATEMENT SECTION ========== */
+        .bold-statement {
+            background: var(--ink);
+            color: var(--bg);
+            padding: 8rem 4vw;
+            text-align: center;
+            position: relative;
             overflow: hidden;
         }
-
-        .work-header {
-            padding: 0 4vw;
-            max-width: 1400px;
-            margin: 0 auto 4rem;
-        }
-
-        .work-gallery-wrapper {
-            width: 100%;
-            overflow-x: auto;
-            overflow-y: hidden;
-            cursor: grab;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            padding: 2rem 0;
-            position: relative;
-            contain: layout;
-        }
-
-        .work-gallery-wrapper::-webkit-scrollbar {
-            display: none;
-        }
-
-        .work-gallery-wrapper:active {
-            cursor: grabbing;
-        }
-
-        .work-gallery {
-            display: flex;
-            gap: 2rem;
-            padding: 0 4vw;
-            width: max-content;
-        }
-
-        .work-card {
-            position: relative;
-            width: clamp(320px, 28vw, 480px);
-            flex-shrink: 0;
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.6s var(--ease-expo);
-            min-width: 0;
-        }
-
-        .work-card:hover {
-            transform: translateY(-8px);
-        }
-
-        .work-card-visual {
-            position: relative;
-            aspect-ratio: 3/4;
-            overflow: hidden;
-            border-radius: 8px;
-        }
-
-        .work-card-visual img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: saturate(0.35) brightness(0.65);
-            transition: all 1.2s var(--ease-smooth);
-            transform: scale(1.05);
-        }
-
-        .work-card:hover .work-card-visual img {
-            filter: saturate(0.7) brightness(0.8);
-            transform: scale(1.12);
-        }
-
-        .work-card-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to top,
-                rgba(10, 10, 15, 0.95) 0%,
-                rgba(10, 10, 15, 0.4) 40%,
-                transparent 70%
-            );
-            opacity: 0.8;
-            transition: opacity 0.5s var(--ease-expo);
-        }
-
-        .work-card:hover .work-card-overlay {
-            opacity: 1;
-        }
-
-        .work-card-num {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: var(--accent);
-            opacity: 0.6;
-            letter-spacing: 0.1em;
-        }
-
-        .work-card-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 2rem;
-            z-index: 2;
-        }
-
-        .work-card-meta {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 0.75rem;
-            align-items: center;
-        }
-
-        .work-card-type {
-            font-family: var(--font-heading);
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        .work-card-location {
-            font-family: var(--font-heading);
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--ink-dim);
-            position: relative;
-            padding-left: 1rem;
-        }
-
-        .work-card-location::before {
+        .bold-statement::before {
             content: '';
             position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 4px;
-            background: var(--ink-dim);
-            border-radius: 50%;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
         }
-
-        .work-card-title {
-            font-family: var(--font-display);
-            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
-            font-weight: 400;
-            color: var(--ink);
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-        }
-
-        .work-card-bottom {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 1rem;
-        }
-
-        .work-card-result {
-            font-family: var(--font-heading);
-            font-size: 0.8rem;
-            color: var(--ink-muted);
-            font-weight: 500;
-        }
-
-        .work-card-cta {
-            font-family: var(--font-heading);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: gap 0.4s var(--ease-expo);
-        }
-
-        .work-card:hover .work-card-cta {
-            gap: 0.75rem;
-        }
-
-        /* Progress Bar */
-        .work-progress {
-            max-width: 1400px;
-            margin: 3rem auto 0;
-            padding: 0 4vw;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .work-progress-track {
-            flex: 1;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 2px;
-            overflow: hidden;
+        .bold-statement-content {
             position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
         }
-
-        .work-progress-fill {
-            height: 100%;
-            width: 100%;
-            background: var(--accent);
-            border-radius: 2px;
-            transition: transform 0.1s linear;
-            transform-origin: left;
-            transform: scaleX(0);
+        .bold-statement h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 6vw, 5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
         }
-
-        .work-progress-text {
+        .bold-statement h2 em {
+            font-style: italic;
+            color: var(--terracotta);
+        }
+        .bold-statement p {
             font-family: var(--font-heading);
-            font-size: 0.75rem;
-            color: var(--ink-dim);
-            letter-spacing: 0.1em;
-            min-width: 3rem;
-            text-align: right;
-        }
-
-        .work-progress-text span {
-            color: var(--accent);
-        }
-
-        /* Scroll Hint */
-        .work-scroll-hint {
-            max-width: 1400px;
-            margin: 1.5rem auto 0;
-            padding: 0 4vw;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-family: var(--font-heading);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--ink-dim);
-        }
-
-        .work-scroll-line {
-            width: 40px;
-            height: 1px;
-            background: linear-gradient(to right, var(--accent), transparent);
-            animation: scrollPulse 2s ease-in-out infinite;
+            font-size: 1.2rem;
+            color: var(--bg);
+            opacity: 0.7;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* ========== METRICS ========== */
@@ -1140,7 +1250,7 @@
             border-radius: 8px;
             padding: 3rem 2rem;
             position: relative;
-            transition: all 0.6s var(--ease-expo);
+            transition: all 0.4s var(--ease-expo);
         }
         .testimonial-card:hover {
             transform: translateY(-8px);
@@ -1210,7 +1320,7 @@
             border-radius: 8px;
             padding: 3rem 2.5rem;
             position: relative;
-            transition: all 0.6s var(--ease-expo);
+            transition: all 0.4s var(--ease-expo);
             min-width: 0;
         }
         .price-card:hover {
@@ -1328,7 +1438,7 @@
             letter-spacing: 0.15em;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.5s var(--ease-expo);
+            transition: all 0.4s var(--ease-expo);
         }
         .price-btn:hover {
             background: var(--accent);
@@ -1410,7 +1520,7 @@
             border-radius: 8px;
             padding: 3rem 2.5rem;
             position: relative;
-            transition: all 0.6s var(--ease-expo);
+            transition: all 0.4s var(--ease-expo);
             min-width: 0;
         }
         .upsell-card:hover {
@@ -1517,7 +1627,7 @@
             letter-spacing: 0.15em;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.5s var(--ease-expo);
+            transition: all 0.4s var(--ease-expo);
         }
         .upsell-btn:hover {
             background: var(--accent);
@@ -1582,7 +1692,7 @@
             color: var(--ink);
             font-family: var(--font-body);
             font-size: 16px; /* Prevents iOS zoom */
-            transition: border-color 0.4s;
+            transition: border-color 0.3s;
             border-radius: 0;
         }
         .form-group input:focus,
@@ -1622,7 +1732,7 @@
             letter-spacing: 0.15em;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.5s var(--ease-expo);
+            transition: all 0.4s var(--ease-expo);
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
@@ -1691,7 +1801,7 @@
             width: 0;
             height: 1px;
             background: var(--accent);
-            transition: width 0.4s var(--ease-expo);
+            transition: width 0.3s var(--ease-expo);
         }
         .footer-col a:hover {
             color: var(--accent);
@@ -1729,7 +1839,7 @@
             color: var(--ink-muted);
             text-decoration: none;
             font-size: 0.9rem;
-            transition: all 0.4s;
+            transition: all 0.3s;
         }
         .footer-socials a:hover {
             border-color: var(--accent);
@@ -1747,7 +1857,7 @@
             flex-direction: column;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.6s var(--ease-expo);
+            transition: opacity 0.5s var(--ease-expo);
         }
         .preview-modal.active {
             opacity: 1;
@@ -1848,7 +1958,7 @@
         .reveal {
             opacity: 0;
             transform: translateY(40px);
-            transition: all 1s var(--ease-expo);
+            transition: all 0.8s var(--ease-expo);
         }
         .reveal.visible {
             opacity: 1;
@@ -1857,7 +1967,7 @@
         .reveal-left {
             opacity: 0;
             transform: translateX(-60px);
-            transition: all 1s var(--ease-expo);
+            transition: all 0.8s var(--ease-expo);
         }
         .reveal-left.visible {
             opacity: 1;
@@ -1866,7 +1976,7 @@
         .reveal-right {
             opacity: 0;
             transform: translateX(60px);
-            transition: all 1s var(--ease-expo);
+            transition: all 0.8s var(--ease-expo);
         }
         .reveal-right.visible {
             opacity: 1;
@@ -1875,7 +1985,7 @@
         .reveal-scale {
             opacity: 0;
             transform: scale(0.9);
-            transition: all 1s var(--ease-expo);
+            transition: all 0.8s var(--ease-expo);
         }
         .reveal-scale.visible {
             opacity: 1;
@@ -1893,7 +2003,7 @@
             justify-content: center;
             flex-direction: column;
             gap: 2rem;
-            transition: opacity 1s var(--ease-expo), visibility 1s;
+            transition: opacity 0.8s var(--ease-expo), visibility 0.8s;
         }
         .loader.done {
             opacity: 0;
@@ -1943,8 +2053,15 @@
                 justify-content: center;
                 gap: 2.5rem;
             }
-            .work-card {
-                width: clamp(280px, 40vw, 380px);
+            .work-project {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .work-project:nth-child(even) {
+                direction: ltr;
+            }
+            .work-project-visual {
+                aspect-ratio: 16/9;
             }
             .philosophy-grid {
                 grid-template-columns: 1fr;
@@ -2017,6 +2134,13 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 3rem;
             }
+            .belonging-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* ============================================================
@@ -2024,10 +2148,8 @@
            ============================================================ */
         @media (max-width: 768px) {
             body {
-                cursor: auto;
                 font-size: 15px;
             }
-            .cursor, .cursor-dot { display: none; }
 
             /* Navigation */
             .nav {
@@ -2085,9 +2207,13 @@
             .hero-desc {
                 padding-left: 0;
                 border-left: none;
-                margin: 0 auto 2rem;
+                margin: 0 auto 1rem;
                 font-size: 1rem;
                 max-width: 100%;
+            }
+            .hero-rejection {
+                padding-left: 0;
+                margin: 0 auto 2rem;
             }
             .hero-actions {
                 padding-left: 0;
@@ -2123,40 +2249,29 @@
 
             /* Work */
             .work {
-                padding: 5rem 0;
+                padding: 5rem 5vw;
+            }
+            .work-grid {
+                gap: 4rem;
+            }
+            .work-project-visual {
+                aspect-ratio: 4/3;
+            }
+            .work-project-title {
+                font-size: 1.8rem;
             }
 
-            .work-header {
-                padding: 0 5vw;
-                margin-bottom: 2.5rem;
+            /* Bold Statement */
+            .bold-statement {
+                padding: 5rem 5vw;
+            }
+            .bold-statement h2 {
+                font-size: clamp(1.8rem, 8vw, 2.5rem);
             }
 
-            .work-gallery {
-                gap: 1.25rem;
-                padding: 0 5vw;
-            }
-
-            .work-card {
-                width: 85vw;
-                max-width: 340px;
-                min-width: 0;
-            }
-
-            .work-card-visual {
-                aspect-ratio: 4/5;
-            }
-
-            .work-card-info {
-                padding: 1.5rem;
-            }
-
-            .work-progress {
-                padding: 0 5vw;
-                margin-top: 2rem;
-            }
-
-            .work-scroll-hint {
-                padding: 0 5vw;
+            /* Belonging */
+            .belonging-col {
+                padding: 2rem 1.5rem;
             }
 
             /* Philosophy */
@@ -2355,16 +2470,8 @@
             .section-head {
                 font-size: 1.6rem;
             }
-            .work-card {
-                width: 80vw;
-                min-height: 260px !important;
-                min-width: 0;
-            }
-            .work-card-visual {
-                aspect-ratio: 3/4;
-            }
-            .work-card-title {
-                font-size: 1.3rem;
+            .work-project-title {
+                font-size: 1.5rem;
             }
             .price-card {
                 padding: 2rem 1.25rem;
@@ -2399,13 +2506,10 @@
         /* Touch device optimizations */
         @media (hover: none) and (pointer: coarse) {
             .scroll-img:hover img,
-            .work-card:hover .work-card-visual img,
+            .work-project-visual:hover img,
             .philosophy-visual:hover img {
                 transform: none;
-                filter: saturate(0.35) brightness(0.65);
-            }
-            .work-card-overlay {
-                opacity: 1;
+                filter: saturate(0.35) brightness(0.7);
             }
             .scroll-img-label {
                 opacity: 1;
@@ -2416,10 +2520,14 @@
             .price-card.featured:hover {
                 transform: none;
             }
-            .work-card:hover {
+            .upsell-card:hover {
                 transform: none;
             }
-            .upsell-card:hover {
+            .problem-item:hover {
+                transform: none;
+            }
+            .belonging-col.for:hover,
+            .belonging-col.not-for:hover {
                 transform: none;
             }
         }
@@ -2427,8 +2535,6 @@
 </head>
 <body>
 
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-dot" id="cursorDot"></div>
     <div class="grain"></div>
 
     <div class="loader" id="loader">
@@ -2442,7 +2548,7 @@
         <a href="#philosophy" onclick="closeMobileMenu()">Philosophy</a>
         <a href="#process" onclick="closeMobileMenu()">Process</a>
         <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
-        <a href="#contact" class="nav-cta" onclick="closeMobileMenu()">Start a Project</a>
+        <a href="#contact" class="nav-cta" onclick="closeMobileMenu()">Get More Clients</a>
     </div>
 
     <div class="preview-modal" id="previewModal">
@@ -2471,7 +2577,7 @@
         </div>
         <div class="nav-meta">
             <span class="nav-location">Kisii, Kenya</span>
-            <a href="#contact" class="nav-cta">Start a Project</a>
+            <a href="#contact" class="nav-cta">Get More Clients</a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -2486,20 +2592,24 @@
             <div class="hero-left">
                 <div class="hero-eyebrow">
                     <div class="hero-eyebrow-line"></div>
-                    <span class="hero-eyebrow-text">Digital Craft from Kisii</span>
+                    <span class="hero-eyebrow-text">Salon & Barbershop Websites</span>
                 </div>
                 <h1>
-                    <span class="line-1">We Build</span>
-                    <span class="line-2">Digital Monuments</span>
+                    <span class="line-1">Most salon sites</span>
+                    <span class="line-2">look good.</span>
+                    <span class="line-1">Mine make money.</span>
                 </h1>
                 <p class="hero-desc">
-                    Award-winning web design for salons and barbershops across East Africa. From concept to conversion — we craft experiences that turn browsers into loyal clients.
+                    I build websites that turn visitors into paying clients for salons and barbershops across East Africa. Not decoration. Booking machines.
+                </p>
+                <p class="hero-rejection">
+                    If you just want a website to "have one," I'm probably not for you.
                 </p>
                 <div class="hero-actions">
                     <a href="#work" class="hero-cta-primary">
-                        View Our Work <i class="fas fa-arrow-right"></i>
+                        Fix My Website <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="#contact" class="hero-cta-secondary">Start a Conversation</a>
+                    <a href="#contact" class="hero-cta-secondary">Let's Build Something That Works</a>
                 </div>
             </div>
 
@@ -2656,7 +2766,173 @@
             </div>
         </div>
 
-        <!-- Philosophy -->
+        <!-- ========== PROBLEM SECTION ========== -->
+        <section class="problem" id="problem">
+            <div class="section-pinned">
+                <div class="section-label reveal">The Real Problem</div>
+                <div class="problem-content">
+                    <h2 class="problem-statement reveal">
+                        Most salon websites fail because they focus on <em>looking good</em> instead of <em>getting booked</em>.
+                    </h2>
+                    <p class="section-sub reveal" style="margin: 0 auto;">
+                        Pretty pictures don't pay rent. Your website should be your best salesperson — working 24/7 to fill your chair.
+                    </p>
+                </div>
+                <div class="problem-grid">
+                    <div class="problem-item reveal">
+                        <div class="problem-item-num">01</div>
+                        <h4>No Clear Path to Book</h4>
+                        <p>Visitors land, get confused, and leave. No booking flow means no revenue.</p>
+                    </div>
+                    <div class="problem-item reveal d1">
+                        <div class="problem-item-num">02</div>
+                        <h4>Looks Good, Converts Zero</h4>
+                        <p>Beautiful design with no strategy is just expensive decoration.</p>
+                    </div>
+                    <div class="problem-item reveal d2">
+                        <div class="problem-item-num">03</div>
+                        <h4>Mobile Disaster</h4>
+                        <p>80% of your clients browse on phones. If it doesn't work on mobile, it doesn't work.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== WORK (Grid Layout - Images & Text Separate) ========== -->
+        <section class="work" id="work">
+            <div class="work-header">
+                <div class="section-label reveal">Selected Work</div>
+                <h2 class="section-head reveal">
+                    Crafted With <em>Obsession.</em>
+                </h2>
+                <p class="section-sub reveal">
+                    Four projects. Four transformations. Each one a testament to what happens when passion meets precision.
+                </p>
+            </div>
+
+            <div class="work-grid">
+                <!-- Project 01 -->
+                <article class="work-project reveal" onclick="openPreview('https://thecutabove-maikodigital.netlify.app/')">
+                    <div class="work-project-visual">
+                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1200&q=80" alt="The Cut Above">
+                        <span class="work-project-num">01</span>
+                    </div>
+                    <div class="work-project-content">
+                        <div class="work-project-meta">
+                            <span class="work-project-type">Barbershop</span>
+                            <span class="work-project-location">Kisii Town</span>
+                        </div>
+                        <h3 class="work-project-title">The Cut Above</h3>
+                        <div class="work-project-before">No online bookings, relying on walk-ins</div>
+                        <div class="work-project-after">Fully booked weekends, +40% revenue in 2 months</div>
+                        <div class="work-project-result">+210% Bookings</div>
+                        <a href="#" class="work-project-cta" onclick="event.stopPropagation(); openPreview('https://thecutabove-maikodigital.netlify.app/')">
+                            Live Preview <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 02 -->
+                <article class="work-project reveal" onclick="openPreview('https://riseandgrind-maikodigital.netlify.app/')">
+                    <div class="work-project-visual">
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80" alt="Rise and Grind">
+                        <span class="work-project-num">02</span>
+                    </div>
+                    <div class="work-project-content">
+                        <div class="work-project-meta">
+                            <span class="work-project-type">Fitness</span>
+                            <span class="work-project-location">Nairobi</span>
+                        </div>
+                        <h3 class="work-project-title">Rise and Grind</h3>
+                        <div class="work-project-before">Low visibility, zero online presence</div>
+                        <div class="work-project-after">Consistent lead flow, waitlist for classes</div>
+                        <div class="work-project-result">+180% Leads</div>
+                        <a href="#" class="work-project-cta" onclick="event.stopPropagation(); openPreview('https://riseandgrind-maikodigital.netlify.app/')">
+                            Live Preview <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 03 -->
+                <article class="work-project reveal" onclick="openPreview('https://atelier-maikodigital.netlify.app/')">
+                    <div class="work-project-visual">
+                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80" alt="Atelier">
+                        <span class="work-project-num">03</span>
+                    </div>
+                    <div class="work-project-content">
+                        <div class="work-project-meta">
+                            <span class="work-project-type">Editorial Studio</span>
+                            <span class="work-project-location">Westlands</span>
+                        </div>
+                        <h3 class="work-project-title">Atelier</h3>
+                        <div class="work-project-before">Portfolio buried, clients couldn't find them</div>
+                        <div class="work-project-after">Inquiry form flooded, raised prices twice</div>
+                        <div class="work-project-result">+340% Inquiries</div>
+                        <a href="#" class="work-project-cta" onclick="event.stopPropagation(); openPreview('https://atelier-maikodigital.netlify.app/')">
+                            Live Preview <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 04 -->
+                <article class="work-project reveal" onclick="openPreview('https://elitecuts-maikodigital.netlify.app/')">
+                    <div class="work-project-visual">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=80" alt="Elite Cuts">
+                        <span class="work-project-num">04</span>
+                    </div>
+                    <div class="work-project-content">
+                        <div class="work-project-meta">
+                            <span class="work-project-type">Luxury Grooming</span>
+                            <span class="work-project-location">Kisii CBD</span>
+                        </div>
+                        <h3 class="work-project-title">Elite Cuts</h3>
+                        <div class="work-project-before">Competing on price, no premium positioning</div>
+                        <div class="work-project-after">Premium rates accepted, clients pre-book weeks ahead</div>
+                        <div class="work-project-result">+275% Walk-ins</div>
+                        <a href="#" class="work-project-cta" onclick="event.stopPropagation(); openPreview('https://elitecuts-maikodigital.netlify.app/')">
+                            Live Preview <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ========== BELONGING SECTION ========== -->
+        <section class="belonging" id="belonging">
+            <div class="section-pinned">
+                <div class="section-label reveal">This Is For You If</div>
+                <h2 class="section-head reveal">
+                    The Right Fit <em>Matters.</em>
+                </h2>
+                <p class="section-sub reveal">
+                    I don't work with everyone. I work with owners who are serious about growth. Here's how to know if we're a match.
+                </p>
+                <div class="belonging-grid">
+                    <div class="belonging-col for reveal">
+                        <h4>This is for you if:</h4>
+                        <ul>
+                            <li>You run a salon or barbershop</li>
+                            <li>You want more bookings, not just a pretty site</li>
+                            <li>You're serious about growth and willing to invest</li>
+                            <li>You understand that a website is a sales tool, not a brochure</li>
+                            <li>You want to stand out from every other salon in your area</li>
+                        </ul>
+                    </div>
+                    <div class="belonging-col not-for reveal d1">
+                        <h4>Not for you if:</h4>
+                        <ul>
+                            <li>You want the cheapest option available</li>
+                            <li>You just want something "basic" to check a box</li>
+                            <li>You're not willing to change how clients find you</li>
+                            <li>You think a website alone fixes a broken business</li>
+                            <li>You need it done yesterday with no planning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== PHILOSOPHY ========== -->
         <section class="philosophy" id="philosophy">
             <div class="section-pinned">
                 <div class="section-label reveal">Our Philosophy</div>
@@ -2665,7 +2941,7 @@
                     <em>It's Strategy.</em>
                 </h2>
                 <p class="section-sub reveal">
-                    Every pixel serves a purpose. Every interaction tells a story. We don't build websites — we build digital monuments to your craft.
+                    Most salon websites fail because they focus on looking good. I focus on getting you booked.
                 </p>
                 <div class="philosophy-grid">
                     <div class="philosophy-visual reveal-scale">
@@ -2690,124 +2966,16 @@
             </div>
         </section>
 
-        <!-- ========== WORK (Horizontal Scroll Gallery) ========== -->
-        <section class="work" id="work">
-            <div class="work-header">
-                <div class="section-label reveal">Selected Work</div>
-                <h2 class="section-head reveal">
-                    Crafted With <em>Obsession.</em>
+        <!-- ========== BOLD STATEMENT SECTION ========== -->
+        <section class="bold-statement">
+            <div class="bold-statement-content">
+                <h2 class="reveal">
+                    Your website should not be <em>decoration.</em><br>
+                    It should be your best <em>salesperson.</em>
                 </h2>
-                <p class="section-sub reveal">
-                    Four projects. Four transformations. Each one a testament to what happens when passion meets precision.
+                <p class="reveal d1">
+                    Every day it sits there looking pretty but not converting is a day you're leaving money on the chair.
                 </p>
-            </div>
-
-            <div class="work-gallery-wrapper">
-                <div class="work-gallery" id="workGallery">
-                    <!-- Project 01 -->
-                    <article class="work-card reveal" onclick="openPreview('https://thecutabove-maikodigital.netlify.app/')">
-                        <div class="work-card-visual">
-                            <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1200&q=80" alt="The Cut Above">
-                            <div class="work-card-overlay"></div>
-                            <span class="work-card-num">01</span>
-                        </div>
-                        <div class="work-card-info">
-                            <div class="work-card-meta">
-                                <span class="work-card-type">Barbershop</span>
-                                <span class="work-card-location">Kisii Town</span>
-                            </div>
-                            <h3 class="work-card-title">The Cut Above</h3>
-                            <div class="work-card-bottom">
-                                <span class="work-card-result">+210% Bookings</span>
-                                <span class="work-card-cta">
-                                    <i class="fas fa-arrow-right"></i> Live Preview
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project 02 -->
-                    <article class="work-card reveal d1" onclick="openPreview('https://riseandgrind-maikodigital.netlify.app/')">
-                        <div class="work-card-visual">
-                            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80" alt="Rise and Grind">
-                            <div class="work-card-overlay"></div>
-                            <span class="work-card-num">02</span>
-                        </div>
-                        <div class="work-card-info">
-                            <div class="work-card-meta">
-                                <span class="work-card-type">Fitness</span>
-                                <span class="work-card-location">Nairobi</span>
-                            </div>
-                            <h3 class="work-card-title">Rise and Grind</h3>
-                            <div class="work-card-bottom">
-                                <span class="work-card-result">+180% Leads</span>
-                                <span class="work-card-cta">
-                                    <i class="fas fa-arrow-right"></i> Live Preview
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project 03 -->
-                    <article class="work-card reveal d2" onclick="openPreview('https://atelier-maikodigital.netlify.app/')">
-                        <div class="work-card-visual">
-                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80" alt="Atelier">
-                            <div class="work-card-overlay"></div>
-                            <span class="work-card-num">03</span>
-                        </div>
-                        <div class="work-card-info">
-                            <div class="work-card-meta">
-                                <span class="work-card-type">Editorial Studio</span>
-                                <span class="work-card-location">Westlands</span>
-                            </div>
-                            <h3 class="work-card-title">Atelier</h3>
-                            <div class="work-card-bottom">
-                                <span class="work-card-result">+340% Inquiries</span>
-                                <span class="work-card-cta">
-                                    <i class="fas fa-arrow-right"></i> Live Preview
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project 04 -->
-                    <article class="work-card reveal d3" onclick="openPreview('https://elitecuts-maikodigital.netlify.app/')">
-                        <div class="work-card-visual">
-                            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=80" alt="Elite Cuts">
-                            <div class="work-card-overlay"></div>
-                            <span class="work-card-num">04</span>
-                        </div>
-                        <div class="work-card-info">
-                            <div class="work-card-meta">
-                                <span class="work-card-type">Luxury Grooming</span>
-                                <span class="work-card-location">Kisii CBD</span>
-                            </div>
-                            <h3 class="work-card-title">Elite Cuts</h3>
-                            <div class="work-card-bottom">
-                                <span class="work-card-result">+275% Walk-ins</span>
-                                <span class="work-card-cta">
-                                    <i class="fas fa-arrow-right"></i> Live Preview
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-
-            <!-- Progress Bar -->
-            <div class="work-progress">
-                <div class="work-progress-track">
-                    <div class="work-progress-fill" id="workProgressFill"></div>
-                </div>
-                <div class="work-progress-text">
-                    <span id="workCurrent">01</span> / 04
-                </div>
-            </div>
-
-            <!-- Scroll Hint -->
-            <div class="work-scroll-hint reveal">
-                <div class="work-scroll-line"></div>
-                <span>Drag or scroll to explore</span>
             </div>
         </section>
 
@@ -2967,7 +3135,7 @@
                             <li><i class="fas fa-check"></i> 7-Day Delivery</li>
                             <li><i class="fas fa-check"></i> 7 Days Support</li>
                         </ul>
-                        <button class="price-btn" onclick="location.href='#contact'">Begin Journey</button>
+                        <button class="price-btn" onclick="location.href='#contact'">Get More Clients</button>
                     </div>
 
                     <!-- GROWTH -->
@@ -3115,7 +3283,7 @@
                         <textarea name="message" placeholder="Tell us what makes your salon special..."></textarea>
                     </div>
                     <button type="submit" class="form-submit reveal" id="formSubmit">
-                        <i class="fas fa-paper-plane"></i> Send Message
+                        <i class="fas fa-paper-plane"></i> Get More Clients
                     </button>
                 </form>
             </div>
@@ -3127,7 +3295,7 @@
         <div class="footer-grid">
             <div>
                 <a href="#" class="footer-brand">Maiko</a>
-                <p class="footer-desc">Award-winning digital craft for salons and barbershops. Born in Kisii, Kenya. Serving visionaries across East Africa and beyond.</p>
+                <p class="footer-desc">Web design that turns salon visitors into paying clients. Born in Kisii, Kenya. Serving serious owners across East Africa.</p>
             </div>
             <div class="footer-col">
                 <h5>Navigate</h5>
@@ -3169,37 +3337,8 @@
     <script>
         // Loader
         window.addEventListener('load', () => {
-            setTimeout(() => document.getElementById('loader').classList.add('done'), 1800);
+            setTimeout(() => document.getElementById('loader').classList.add('done'), 1200);
         });
-
-        // Custom Cursor
-        const cursor = document.getElementById('cursor');
-        const cursorDot = document.getElementById('cursorDot');
-        let mouseX = 0, mouseY = 0;
-        let cursorX = 0, cursorY = 0;
-
-        if (window.matchMedia('(pointer: fine)').matches) {
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                cursorDot.style.left = mouseX + 'px';
-                cursorDot.style.top = mouseY + 'px';
-            });
-
-            function animateCursor() {
-                cursorX += (mouseX - cursorX) * 0.15;
-                cursorY += (mouseY - cursorY) * 0.15;
-                cursor.style.left = cursorX + 'px';
-                cursor.style.top = cursorY + 'px';
-                requestAnimationFrame(animateCursor);
-            }
-            animateCursor();
-
-            document.querySelectorAll('a, button, .work-card').forEach(el => {
-                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-            });
-        }
 
         // Mobile Menu
         const navToggle = document.getElementById('navToggle');
@@ -3317,61 +3456,6 @@
             }
         });
 
-        // Horizontal drag scrolling for work gallery
-        const gallery = document.getElementById('workGallery');
-        const galleryWrapper = document.querySelector('.work-gallery-wrapper');
-        const progressFill = document.getElementById('workProgressFill');
-        const currentNum = document.getElementById('workCurrent');
-
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        galleryWrapper.addEventListener('mousedown', (e) => {
-            isDown = true;
-            galleryWrapper.style.cursor = 'grabbing';
-            startX = e.pageX - galleryWrapper.offsetLeft;
-            scrollLeft = galleryWrapper.scrollLeft;
-        });
-
-        galleryWrapper.addEventListener('mouseleave', () => {
-            isDown = false;
-            galleryWrapper.style.cursor = 'grab';
-        });
-
-        galleryWrapper.addEventListener('mouseup', () => {
-            isDown = false;
-            galleryWrapper.style.cursor = 'grab';
-        });
-
-        galleryWrapper.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - galleryWrapper.offsetLeft;
-            const walk = (x - startX) * 1.5;
-            galleryWrapper.scrollLeft = scrollLeft - walk;
-        });
-
-        function updateWorkProgress() {
-            const maxScroll = galleryWrapper.scrollWidth - galleryWrapper.clientWidth;
-            const scrolled = galleryWrapper.scrollLeft;
-            const progress = maxScroll > 0 ? Math.max(0, Math.min(1, scrolled / maxScroll)) : 0;
-
-            progressFill.style.transform = `scaleX(${progress})`;
-
-            const cards = gallery.querySelectorAll('.work-card');
-            const totalCards = cards.length;
-            if (totalCards === 0) return;
-
-            // FIX: Use scroll progress to determine active card (works on all screen sizes)
-            const currentIndex = Math.round(progress * (totalCards - 1)) + 1;
-            currentNum.textContent = String(currentIndex).padStart(2, '0');
-        }
-
-        galleryWrapper.addEventListener('scroll', updateWorkProgress);
-        // Initialize on load in case gallery is already scrolled
-        window.addEventListener('load', updateWorkProgress);
-
         // Form handling
         const form = document.getElementById('contactForm');
         const submitBtn = document.getElementById('formSubmit');
@@ -3386,7 +3470,7 @@
                 form.reset();
                 setTimeout(() => {
                     submitBtn.style.background = '';
-                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Get More Clients';
                     submitBtn.disabled = false;
                     if (window.history.replaceState) {
                         window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
